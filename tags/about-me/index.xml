@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About Me on wwcreator Blogging</title>
-    <link>https://wwcreator.github.io/tags/about-me/</link>
-    <description>Recent content in About Me on wwcreator Blogging</description>
+    <title>About Me on Yoyodyne Widget Blogging</title>
+    <link>http://wwcreator.github.io/tags/about-me/</link>
+    <description>Recent content in About Me on Yoyodyne Widget Blogging</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 14 Feb 2017 19:49:54 -0800</lastBuildDate>
-    <atom:link href="https://wwcreator.github.io/tags/about-me/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://wwcreator.github.io/tags/about-me/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>about</title>
-      <link>https://wwcreator.github.io/about/</link>
+      <link>http://wwcreator.github.io/about/</link>
       <pubDate>Tue, 14 Feb 2017 19:49:54 -0800</pubDate>
       
-      <guid>https://wwcreator.github.io/about/</guid>
+      <guid>http://wwcreator.github.io/about/</guid>
       <description>
 
 &lt;h3 id=&#34;this-is-a-wwcreator-blog:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;

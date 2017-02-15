@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>second &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://wwcreator.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://wwcreator.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://wwcreator.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://wwcreator.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://wwcreator.github.io/css/hyde-x.css">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wwcreator.github.io/touch-icon-144-precomposed.png">
+  <link href="http://wwcreator.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+</head>
+<body>
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://wwcreator.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://wwcreator.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">second</h1>
+    <span class="post-date">Feb 14, 2017 &middot; 2 minute read
+    
+    <br/>
+    <a class="label" href="http://wwcreator.github.io/categories/forth">forth</a>
+    </span>
+    
+
+<h1 id="mysql-常用的备份方式有哪些:9f7936f9b5c071ae81db818b80a44a0d">MySQL 常用的备份方式有哪些 ?</h1>
+
+<p>不管是MySQL, Oracle，MariaDB 等关系型数据库，还是 MongoDB，Redis 等 NoSQL 数据库，都有众所周知的<code>Logical Backup</code> &amp;  <code>Physical Backup</code> 。</p>
+
+<h2 id="mysql-logical-backups:9f7936f9b5c071ae81db818b80a44a0d">MySQL Logical Backups</h2>
+
+<p>逻辑备份是按照数据库的逻辑结构（CREATE DATABASE, CREATE TABLE 语句）和内容（INSERT,分隔文本）的方式来存储。非常常用的是当属 MySQL 自带的 <code>mysqldump</code>和 <code>mydumper</code> 工具。</p>
+
+<h3 id="mysqldump:9f7936f9b5c071ae81db818b80a44a0d">mysqldump</h3>
+
+<p>mysqldump 支持导出部分DB，部分Table， 而且还支持 &ndash;where 行条件过滤（不支持列过滤），InnoDB引擎不锁表导出等。还支持获取导出的 Binlog position，很方便的进行PIT（point in time）recover。</p>
+
+<pre><code>for example:
+  mysqldump -u test -p -P 3307 -h 127.0.0.1 --single-transaction --master-data=2 --database test_dump --tables test1 &gt; /test/test_dump_test1.sql
+
+recover：
+  mysql -u test -p -P 3307 -h 127.0.0.1 -D test_dump -e &quot;source /test/test_dump_test1.sql&quot; &gt;import.log 2&gt;&amp;1
+</code></pre>
+
+<p>PS: MySQL 5.7.11 版本引入 mysqlpump 工具，支持多线程（粒度到表级别），压缩导入导出。
+mysqlpump的并行导出功能的架构为：队列+线程，允许有多个队列，每个队列下有多个线程，而一个队列可以绑定1个或者多个数据库。但是，对于每张表的导出只能是单个线程的。</p>
+
+<h3 id="mydumper:9f7936f9b5c071ae81db818b80a44a0d">mydumper</h3>
+
+<p>mydumper（&amp;myloader）是用于对MySQL数据库进行多线程备份和恢复的开源 (GNU GPLv3)工具。开发人员主要来自MySQL、Facebook和SkySQL公司，目前由Percona公司开发和维护。
+mydumper 支持多线程备份恢复，粒度到记录级别，对于导出大容量的数据，效率非常高。</p>
+
+<pre><code>for example:
+  mydumper -u test -p -P 3307 -h 127.0.0.1 -B test_dump -T test1 -b -t 16 -c -o /test/test_dump_test1
+recover:
+  myloader -u test -p -P 3307 -h 127.0.0.1 --directory=/test/test_dump_test1 --overwrite-tables -B test_dump
+</code></pre>
+
+<p>备份原理：
+  - 主线程将各个库表，分成若干个任务，放入任务队列
+  - 执行线程从任务队列读取任务，并执行。</p>
+
+<h2 id="mysql-physical-backups:9f7936f9b5c071ae81db818b80a44a0d">MySQL Physical Backups</h2>
+
+<p>物理备份由一系列的存储数据库内容的 raw 格式的文件组成，为了保证一致性，必须关机来拷贝物理文件，但是 Percona 公司的 Xtrabackup 工具完美的解决了关机备份的不可行方案，从而实现热备。</p>
+
+<h3 id="xtrabackup:9f7936f9b5c071ae81db818b80a44a0d">Xtrabackup</h3>
+
+<p>Xtrabackup 有两个主要的工具，xtrabackup，innobackup：
+- xtrabackup 只能备份 InnoDB 和 XtraDB 两种数据表
+- innobackupex 封装了 xtrabackup，同时可以备份 MyISAM 数据表</p>
+
+<pre><code>for example:
+  第一步：
+  innobackupex --user=bkpuser  --password=bkppassword /data/backups
+  第二步：
+  cd /data/backups
+  innobackupex --apply-log ./
+recover:
+  将备份拷贝到需要的目录即可使用。
+</code></pre>
+
+<p>备份的原理：
+1. Xtrabackup ：
+   - REDO 拷贝线程， 拷贝 REDO Log
+   - ibd 拷贝线程 拷贝 InnoDB 物理文件
+2. 完成后，执行 FTWRL 添加全局锁
+3. 拷贝 frm，MYD,MYI etc.
+4. 停止拷贝 REDO ,UNLOCK tables
+5. 等待 xtrabackup 结束，备份结束</p>
+
+<h2 id="mysqldump-pk-mydumper:9f7936f9b5c071ae81db818b80a44a0d">mysqldump PK mydumper</h2>
+
+<ul>
+<li>mysqldump 为 MySQL 原生工具，不需要额外安装，对于导出不是特别大的DB，仍然是非常棒的工具，但对于容量大，但又必须逻辑导出的场景就不是特别合适，需要的时间特别长，不支持多线程导入导出。</li>
+<li>mydumper 需要额外安装才能使用，支持多线程备份导入，速度快，支持后台模式导出</li>
+</ul>
+
+<h2 id="logical-pk-physical-backup:9f7936f9b5c071ae81db818b80a44a0d">Logical PK Physical Backup</h2>
+
+<ul>
+<li>逻辑备份可以灵活的导出数据（表结构，数据，过滤等）</li>
+<li>逻辑备份与物理备份导出所有数据来看，要慢很多，因为需要读取数据并转换</li>
+<li>逻辑备份的恢复时间长</li>
+<li>物理备份的文件与线上 MySQL 完全一致，包含所有的日志等信息</li>
+</ul>
+
+  </div>
+  
+</div>
+
+
+
+
+
+</body>
+</html>
+
