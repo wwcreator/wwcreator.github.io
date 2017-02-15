@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test on Yoyodyne Widget Blogging</title>
+    <title>Test on wwcreator Blog</title>
     <link>https://wwcreator.github.io/tags/test/</link>
-    <description>Recent content in Test on Yoyodyne Widget Blogging</description>
+    <description>Recent content in Test on wwcreator Blog</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>yuwen_qing@126.com (wwcreator)</managingEditor>
+    <webMaster>yuwen_qing@126.com (wwcreator)</webMaster>
+    <copyright>(c) 2017 wwcreator.</copyright>
     <lastBuildDate>Tue, 14 Feb 2017 19:50:52 -0800</lastBuildDate>
     <atom:link href="https://wwcreator.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>first</title>
-      <link>https://wwcreator.github.io/2017/02/first/</link>
+      <title>the first article by hugo</title>
+      <link>https://wwcreator.github.io/2017/02/14/the-first-article-by-hugo/</link>
       <pubDate>Tue, 14 Feb 2017 19:50:52 -0800</pubDate>
-      
-      <guid>https://wwcreator.github.io/2017/02/first/</guid>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/02/14/the-first-article-by-hugo/</guid>
       <description>
 
 &lt;h2 id=&#34;hello-world:e8fb9c67eba912c72729806db31eaa1b&#34;&gt;Hello World&lt;/h2&gt;

@@ -1,37 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Yoyodyne Widget Blogging</title>
+    <title>wwcreator Blog</title>
     <link>https://wwcreator.github.io/</link>
-    <description>Recent content on Yoyodyne Widget Blogging</description>
+    <description>Recent content on wwcreator Blog</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>yuwen_qing@126.com (wwcreator)</managingEditor>
+    <webMaster>yuwen_qing@126.com (wwcreator)</webMaster>
+    <copyright>(c) 2017 wwcreator.</copyright>
     <lastBuildDate>Tue, 14 Feb 2017 21:16:08 -0800</lastBuildDate>
     <atom:link href="https://wwcreator.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>forth</title>
-      <link>https://wwcreator.github.io/2017/02/forth/</link>
+      <link>https://wwcreator.github.io/2017/02/14/forth/</link>
       <pubDate>Tue, 14 Feb 2017 21:16:08 -0800</pubDate>
-      
-      <guid>https://wwcreator.github.io/2017/02/forth/</guid>
-      <description></description>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/02/14/forth/</guid>
+      <description>
+
+&lt;h2 id=&#34;the-last-test-article:6da932b6aa4d59f4ccd08f59841f2297&#34;&gt;the last test article&lt;/h2&gt;
+
+&lt;p&gt;this is a test.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;this is a test&lt;/code&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
-      <title>third</title>
-      <link>https://wwcreator.github.io/2017/02/third/</link>
+      <title>another test article</title>
+      <link>https://wwcreator.github.io/2017/02/14/another-test-article/</link>
       <pubDate>Tue, 14 Feb 2017 21:11:48 -0800</pubDate>
-      
-      <guid>https://wwcreator.github.io/2017/02/third/</guid>
-      <description></description>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/02/14/another-test-article/</guid>
+      <description>
+
+&lt;h2 id=&#34;this-is-a-title:1fe12548244a1733e38ed5b40fa959e0&#34;&gt;this is a title&lt;/h2&gt;
+
+&lt;p&gt;** bold **
+- first line
+- second line
+- third line
+- forth line
+- fifth line&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; this is coder line
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
     <item>
       <title>second</title>
-      <link>https://wwcreator.github.io/2017/02/second/</link>
+      <link>https://wwcreator.github.io/2017/02/14/second/</link>
       <pubDate>Tue, 14 Feb 2017 21:11:31 -0800</pubDate>
-      
-      <guid>https://wwcreator.github.io/2017/02/second/</guid>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/02/14/second/</guid>
       <description>
 
 &lt;h1 id=&#34;mysql-常用的备份方式有哪些:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
@@ -119,11 +143,11 @@ recover:
     </item>
     
     <item>
-      <title>first</title>
-      <link>https://wwcreator.github.io/2017/02/first/</link>
+      <title>the first article by hugo</title>
+      <link>https://wwcreator.github.io/2017/02/14/the-first-article-by-hugo/</link>
       <pubDate>Tue, 14 Feb 2017 19:50:52 -0800</pubDate>
-      
-      <guid>https://wwcreator.github.io/2017/02/first/</guid>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/02/14/the-first-article-by-hugo/</guid>
       <description>
 
 &lt;h2 id=&#34;hello-world:e8fb9c67eba912c72729806db31eaa1b&#34;&gt;Hello World&lt;/h2&gt;
@@ -137,11 +161,11 @@ recover:
       <title>about</title>
       <link>https://wwcreator.github.io/about/</link>
       <pubDate>Tue, 14 Feb 2017 19:49:54 -0800</pubDate>
-      
+      <author>yuwen_qing@126.com (wwcreator)</author>
       <guid>https://wwcreator.github.io/about/</guid>
       <description>
 
-&lt;h3 id=&#34;this-is-a-wwcreator-blog:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;
+&lt;h3 id=&#34;this-is-a-wwcreator-blog&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;
 </description>
     </item>
     
