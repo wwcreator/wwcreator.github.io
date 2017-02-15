@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Forth on Yoyodyne Widget Blogging</title>
-    <link>http://wwcreator.github.io/categories/forth/</link>
+    <link>https://wwcreator.github.io/categories/forth/</link>
     <description>Recent content in Forth on Yoyodyne Widget Blogging</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 14 Feb 2017 21:16:08 -0800</lastBuildDate>
-    <atom:link href="http://wwcreator.github.io/categories/forth/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://wwcreator.github.io/categories/forth/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>forth</title>
-      <link>http://wwcreator.github.io/2017/02/forth/</link>
+      <link>https://wwcreator.github.io/2017/02/forth/</link>
       <pubDate>Tue, 14 Feb 2017 21:16:08 -0800</pubDate>
       
-      <guid>http://wwcreator.github.io/2017/02/forth/</guid>
+      <guid>https://wwcreator.github.io/2017/02/forth/</guid>
       <description></description>
     </item>
     
     <item>
       <title>second</title>
-      <link>http://wwcreator.github.io/2017/02/second/</link>
+      <link>https://wwcreator.github.io/2017/02/second/</link>
       <pubDate>Tue, 14 Feb 2017 21:11:31 -0800</pubDate>
       
-      <guid>http://wwcreator.github.io/2017/02/second/</guid>
+      <guid>https://wwcreator.github.io/2017/02/second/</guid>
       <description>
 
 &lt;h1 id=&#34;mysql-常用的备份方式有哪些:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Third on Yoyodyne Widget Blogging</title>
-    <link>http://wwcreator.github.io/categories/third/</link>
+    <link>https://wwcreator.github.io/categories/third/</link>
     <description>Recent content in Third on Yoyodyne Widget Blogging</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 14 Feb 2017 21:11:48 -0800</lastBuildDate>
-    <atom:link href="http://wwcreator.github.io/categories/third/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://wwcreator.github.io/categories/third/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>third</title>
-      <link>http://wwcreator.github.io/2017/02/third/</link>
+      <link>https://wwcreator.github.io/2017/02/third/</link>
       <pubDate>Tue, 14 Feb 2017 21:11:48 -0800</pubDate>
       
-      <guid>http://wwcreator.github.io/2017/02/third/</guid>
+      <guid>https://wwcreator.github.io/2017/02/third/</guid>
       <description></description>
     </item>
     

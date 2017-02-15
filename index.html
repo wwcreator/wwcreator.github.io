@@ -10,24 +10,24 @@
   <title>Yoyodyne Widget Blogging &middot; </title>
 
   
-  <link rel="stylesheet" href="http://wwcreator.github.io/css/poole.css">
-  <link rel="stylesheet" href="http://wwcreator.github.io/css/hyde.css">
-  <link rel="stylesheet" href="http://wwcreator.github.io/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://wwcreator.github.io/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://wwcreator.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://wwcreator.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://wwcreator.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://wwcreator.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://wwcreator.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://wwcreator.github.io/css/hyde-x.css">
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://wwcreator.github.io/touch-icon-144-precomposed.png">
-  <link href="http://wwcreator.github.io/favicon.png" rel="icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://wwcreator.github.io/touch-icon-144-precomposed.png">
+  <link href="https://wwcreator.github.io/favicon.png" rel="icon">
 
   
   
   
-  <link href="http://wwcreator.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Yoyodyne Widget Blogging &middot; " />
+  <link href="https://wwcreator.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Yoyodyne Widget Blogging &middot; " />
 
   <meta name="description" content="">
   <meta name="keywords" content="">
@@ -43,7 +43,7 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://wwcreator.github.io/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="https://wwcreator.github.io/">Blog</a></li>
       
     </ul>
 
@@ -63,7 +63,7 @@
 
     
 
-    <p>Copyright &copy; 2017 <a href="http://wwcreator.github.io/license/">License</a><br/>
+    <p>Copyright &copy; 2017 <a href="https://wwcreator.github.io/license/">License</a><br/>
        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -75,12 +75,12 @@
     
     <div class="post">
       <h1 class="post-title">
-        <a href="http://wwcreator.github.io/2017/02/forth/">forth</a>
+        <a href="https://wwcreator.github.io/2017/02/forth/">forth</a>
       </h1>
       <span class="post-date">Feb 14, 2017 &middot; 0 minute read
       
       <br/>
-      <a class="label" href="http://wwcreator.github.io/categories/forth">forth</a>
+      <a class="label" href="https://wwcreator.github.io/categories/forth">forth</a>
       </span>
       
       
@@ -90,12 +90,12 @@
     
     <div class="post">
       <h1 class="post-title">
-        <a href="http://wwcreator.github.io/2017/02/third/">third</a>
+        <a href="https://wwcreator.github.io/2017/02/third/">third</a>
       </h1>
       <span class="post-date">Feb 14, 2017 &middot; 0 minute read
       
       <br/>
-      <a class="label" href="http://wwcreator.github.io/categories/third">third</a>
+      <a class="label" href="https://wwcreator.github.io/categories/third">third</a>
       </span>
       
       
@@ -105,27 +105,27 @@
     
     <div class="post">
       <h1 class="post-title">
-        <a href="http://wwcreator.github.io/2017/02/second/">second</a>
+        <a href="https://wwcreator.github.io/2017/02/second/">second</a>
       </h1>
       <span class="post-date">Feb 14, 2017 &middot; 2 minute read
       
       <br/>
-      <a class="label" href="http://wwcreator.github.io/categories/forth">forth</a>
+      <a class="label" href="https://wwcreator.github.io/categories/forth">forth</a>
       </span>
       
       MySQL 常用的备份方式有哪些 ? 不管是MySQL, Oracle，MariaDB 等关系型数据库，还是 MongoDB，Redis 等 NoSQL 数据库，都有众所周知的Logical Backup &amp; Physical Backup 。 MySQL Logical Backups 逻辑备份是按照数据库的逻辑结构（CREATE DATABASE, CREATE TABLE 语句）和内容（INSERT,分隔文本）的方式来存储。非常常用的是当属 MySQL 自带的 mysqldump和 mydumper 工具。 mysqldump mysqldump 支持导出部分DB，部分Table， 而且还支持 &ndash;where 行条件过滤（不支持列过滤），InnoDB引擎不锁表导出等。还支持获取导出的 Binlog position，很方便的进行PIT（point in time）recover。 for example: mysqldump -u test -p -P 3307 -h 127.0.0.1 --single-transaction --master-data=2 --database test_dump --tables test1 &gt; /test/test_dump_test1.sql recover： mysql -u test -p -P 3307 -h 127.0.0.1 -D test_dump -e &quot;source /test/test_dump_test1.sql&quot; &gt;import.log 2&gt;&amp;1 PS: MySQL 5.7.11 版本引入 mysqlpump 工具，支持多线程（粒度到表级别），压缩导入导出。 mysqlpump的并行导出功能的架构为：队列+线程，允许有多个队列，每个队列下有多个线程，而一个队列可以绑定1个或者多个数据库。但是，对于每张表的导出只能是单个线程的。 mydumper mydumper（&amp;myloader）是用于对MySQL数据库进行多线程备份和恢复的开源 (GNU GPLv3)工具。开发人员主要来自MySQL、Facebook和SkySQL公司，目前由Percona公司开发和维护。 mydumper 支持多线程备份恢复，粒度到记录级别，对于导出大容量的数据，效率非常高。 for example: mydumper -u test -p -P 3307 -h 127.0.0.1 -B test_dump -T test1 -b -t 16 -c -o /test/test_dump_test1 recover: myloader -u test -p -P 3307 -h 127.0.0.1 --directory=/test/test_dump_test1 --overwrite-tables -B test_dump 备份原理： - 主线程将各个库表，分成若干个任务，放入任务队列 - 执行线程从任务队列读取任务，并执行。 MySQL Physical Backups 物理备份由一系列的存储数据库内容的 raw 格式的文件组成，为了保证一致性，必须关机来拷贝物理文件，但是 Percona 公司的 Xtrabackup 工具完美的解决了关机备份的不可行方案，从而实现热备。 Xtrabackup Xtrabackup 有两个主要的工具，xtrabackup，innobackup： - xtrabackup 只能备份 InnoDB 和 XtraDB 两种数据表 - innobackupex 封装了 xtrabackup，同时可以备份 MyISAM 数据表 for example: 第一步： innobackupex --user=bkpuser --password=bkppassword /data/backups 第二步： cd /data/backups innobackupex --apply-log ./ recover: 将备份拷贝到需要的目录即可使用。 备份的原理： 1.
-      <a href="http://wwcreator.github.io/2017/02/second/">Read On &rarr;</a>
+      <a href="https://wwcreator.github.io/2017/02/second/">Read On &rarr;</a>
       
     </div>
     
     <div class="post">
       <h1 class="post-title">
-        <a href="http://wwcreator.github.io/2017/02/first/">first</a>
+        <a href="https://wwcreator.github.io/2017/02/first/">first</a>
       </h1>
       <span class="post-date">Feb 14, 2017 &middot; 1 minute read
       
       <br/>
-      <a class="label" href="http://wwcreator.github.io/categories/test">test</a>
+      <a class="label" href="https://wwcreator.github.io/categories/test">test</a>
       </span>
       
       Hello World Hello World

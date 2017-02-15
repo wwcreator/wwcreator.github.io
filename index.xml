@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Yoyodyne Widget Blogging</title>
-    <link>http://wwcreator.github.io/</link>
+    <link>https://wwcreator.github.io/</link>
     <description>Recent content on Yoyodyne Widget Blogging</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 14 Feb 2017 21:16:08 -0800</lastBuildDate>
-    <atom:link href="http://wwcreator.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://wwcreator.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>forth</title>
-      <link>http://wwcreator.github.io/2017/02/forth/</link>
+      <link>https://wwcreator.github.io/2017/02/forth/</link>
       <pubDate>Tue, 14 Feb 2017 21:16:08 -0800</pubDate>
       
-      <guid>http://wwcreator.github.io/2017/02/forth/</guid>
+      <guid>https://wwcreator.github.io/2017/02/forth/</guid>
       <description></description>
     </item>
     
     <item>
       <title>third</title>
-      <link>http://wwcreator.github.io/2017/02/third/</link>
+      <link>https://wwcreator.github.io/2017/02/third/</link>
       <pubDate>Tue, 14 Feb 2017 21:11:48 -0800</pubDate>
       
-      <guid>http://wwcreator.github.io/2017/02/third/</guid>
+      <guid>https://wwcreator.github.io/2017/02/third/</guid>
       <description></description>
     </item>
     
     <item>
       <title>second</title>
-      <link>http://wwcreator.github.io/2017/02/second/</link>
+      <link>https://wwcreator.github.io/2017/02/second/</link>
       <pubDate>Tue, 14 Feb 2017 21:11:31 -0800</pubDate>
       
-      <guid>http://wwcreator.github.io/2017/02/second/</guid>
+      <guid>https://wwcreator.github.io/2017/02/second/</guid>
       <description>
 
 &lt;h1 id=&#34;mysql-常用的备份方式有哪些:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
@@ -120,10 +120,10 @@ recover:
     
     <item>
       <title>first</title>
-      <link>http://wwcreator.github.io/2017/02/first/</link>
+      <link>https://wwcreator.github.io/2017/02/first/</link>
       <pubDate>Tue, 14 Feb 2017 19:50:52 -0800</pubDate>
       
-      <guid>http://wwcreator.github.io/2017/02/first/</guid>
+      <guid>https://wwcreator.github.io/2017/02/first/</guid>
       <description>
 
 &lt;h2 id=&#34;hello-world:e8fb9c67eba912c72729806db31eaa1b&#34;&gt;Hello World&lt;/h2&gt;
@@ -135,10 +135,10 @@ recover:
     
     <item>
       <title>about</title>
-      <link>http://wwcreator.github.io/about/</link>
+      <link>https://wwcreator.github.io/about/</link>
       <pubDate>Tue, 14 Feb 2017 19:49:54 -0800</pubDate>
       
-      <guid>http://wwcreator.github.io/about/</guid>
+      <guid>https://wwcreator.github.io/about/</guid>
       <description>
 
 &lt;h3 id=&#34;this-is-a-wwcreator-blog:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;
