@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test on wwcreator Blogging</title>
+    <link>https://wwcreator.github.io/categories/test/</link>
+    <description>Recent content in Test on wwcreator Blogging</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 14 Feb 2017 19:50:52 -0800</lastBuildDate>
+    <atom:link href="https://wwcreator.github.io/categories/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>first</title>
+      <link>https://wwcreator.github.io/post/first/</link>
+      <pubDate>Tue, 14 Feb 2017 19:50:52 -0800</pubDate>
+      
+      <guid>https://wwcreator.github.io/post/first/</guid>
+      <description>
+
+&lt;h2 id=&#34;hello-world:e8fb9c67eba912c72729806db31eaa1b&#34;&gt;Hello World&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The First Kiss Of Love&lt;/li&gt;
+&lt;li&gt;She Walks In Beauty&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
