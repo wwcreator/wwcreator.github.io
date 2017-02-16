@@ -20,7 +20,7 @@
       <guid>https://wwcreator.github.io/2017/02/14/forth/</guid>
       <description>
 
-&lt;h2 id=&#34;the-last-test-article:6da932b6aa4d59f4ccd08f59841f2297&#34;&gt;the last test article&lt;/h2&gt;
+&lt;h2 id=&#34;the-last-test-article&#34;&gt;the last test article&lt;/h2&gt;
 
 &lt;p&gt;this is a test.&lt;/p&gt;
 
@@ -58,15 +58,15 @@
       <guid>https://wwcreator.github.io/2017/02/14/second/</guid>
       <description>
 
-&lt;h1 id=&#34;mysql-常用的备份方式有哪些&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
+&lt;h1 id=&#34;mysql-常用的备份方式有哪些:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
 
 &lt;p&gt;不管是MySQL, Oracle，MariaDB 等关系型数据库，还是 MongoDB，Redis 等 NoSQL 数据库，都有众所周知的&lt;code&gt;Logical Backup&lt;/code&gt; &amp;amp;  &lt;code&gt;Physical Backup&lt;/code&gt; 。&lt;/p&gt;
 
-&lt;h2 id=&#34;mysql-logical-backups&#34;&gt;MySQL Logical Backups&lt;/h2&gt;
+&lt;h2 id=&#34;mysql-logical-backups:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL Logical Backups&lt;/h2&gt;
 
 &lt;p&gt;逻辑备份是按照数据库的逻辑结构（CREATE DATABASE, CREATE TABLE 语句）和内容（INSERT,分隔文本）的方式来存储。非常常用的是当属 MySQL 自带的 &lt;code&gt;mysqldump&lt;/code&gt;和 &lt;code&gt;mydumper&lt;/code&gt; 工具。&lt;/p&gt;
 
-&lt;h3 id=&#34;mysqldump&#34;&gt;mysqldump&lt;/h3&gt;
+&lt;h3 id=&#34;mysqldump:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;mysqldump&lt;/h3&gt;
 
 &lt;p&gt;mysqldump 支持导出部分DB，部分Table， 而且还支持 &amp;ndash;where 行条件过滤（不支持列过滤），InnoDB引擎不锁表导出等。还支持获取导出的 Binlog position，很方便的进行PIT（point in time）recover。&lt;/p&gt;
 
@@ -80,7 +80,7 @@ recover：
 &lt;p&gt;PS: MySQL 5.7.11 版本引入 mysqlpump 工具，支持多线程（粒度到表级别），压缩导入导出。
 mysqlpump的并行导出功能的架构为：队列+线程，允许有多个队列，每个队列下有多个线程，而一个队列可以绑定1个或者多个数据库。但是，对于每张表的导出只能是单个线程的。&lt;/p&gt;
 
-&lt;h3 id=&#34;mydumper&#34;&gt;mydumper&lt;/h3&gt;
+&lt;h3 id=&#34;mydumper:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;mydumper&lt;/h3&gt;
 
 &lt;p&gt;mydumper（&amp;amp;myloader）是用于对MySQL数据库进行多线程备份和恢复的开源 (GNU GPLv3)工具。开发人员主要来自MySQL、Facebook和SkySQL公司，目前由Percona公司开发和维护。
 mydumper 支持多线程备份恢复，粒度到记录级别，对于导出大容量的数据，效率非常高。&lt;/p&gt;
@@ -95,11 +95,11 @@ recover:
   - 主线程将各个库表，分成若干个任务，放入任务队列
   - 执行线程从任务队列读取任务，并执行。&lt;/p&gt;
 
-&lt;h2 id=&#34;mysql-physical-backups&#34;&gt;MySQL Physical Backups&lt;/h2&gt;
+&lt;h2 id=&#34;mysql-physical-backups:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL Physical Backups&lt;/h2&gt;
 
 &lt;p&gt;物理备份由一系列的存储数据库内容的 raw 格式的文件组成，为了保证一致性，必须关机来拷贝物理文件，但是 Percona 公司的 Xtrabackup 工具完美的解决了关机备份的不可行方案，从而实现热备。&lt;/p&gt;
 
-&lt;h3 id=&#34;xtrabackup&#34;&gt;Xtrabackup&lt;/h3&gt;
+&lt;h3 id=&#34;xtrabackup:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;Xtrabackup&lt;/h3&gt;
 
 &lt;p&gt;Xtrabackup 有两个主要的工具，xtrabackup，innobackup：
 - xtrabackup 只能备份 InnoDB 和 XtraDB 两种数据表
@@ -124,14 +124,14 @@ recover:
 4. 停止拷贝 REDO ,UNLOCK tables
 5. 等待 xtrabackup 结束，备份结束&lt;/p&gt;
 
-&lt;h2 id=&#34;mysqldump-pk-mydumper&#34;&gt;mysqldump PK mydumper&lt;/h2&gt;
+&lt;h2 id=&#34;mysqldump-pk-mydumper:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;mysqldump PK mydumper&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;mysqldump 为 MySQL 原生工具，不需要额外安装，对于导出不是特别大的DB，仍然是非常棒的工具，但对于容量大，但又必须逻辑导出的场景就不是特别合适，需要的时间特别长，不支持多线程导入导出。&lt;/li&gt;
 &lt;li&gt;mydumper 需要额外安装才能使用，支持多线程备份导入，速度快，支持后台模式导出&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;logical-pk-physical-backup&#34;&gt;Logical PK Physical Backup&lt;/h2&gt;
+&lt;h2 id=&#34;logical-pk-physical-backup:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;Logical PK Physical Backup&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;逻辑备份可以灵活的导出数据（表结构，数据，过滤等）&lt;/li&gt;
@@ -150,7 +150,7 @@ recover:
       <guid>https://wwcreator.github.io/2017/02/14/the-first-article-by-hugo/</guid>
       <description>
 
-&lt;h2 id=&#34;hello-world:e8fb9c67eba912c72729806db31eaa1b&#34;&gt;Hello World&lt;/h2&gt;
+&lt;h2 id=&#34;hello-world&#34;&gt;Hello World&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;Hello World 
 &lt;/code&gt;&lt;/pre&gt;
