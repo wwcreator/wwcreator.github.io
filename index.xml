@@ -9,8 +9,89 @@
     <managingEditor>yuwen_qing@126.com (wwcreator)</managingEditor>
     <webMaster>yuwen_qing@126.com (wwcreator)</webMaster>
     <copyright>(c) 2017 wwcreator.</copyright>
-    <lastBuildDate>Tue, 14 Feb 2017 21:16:08 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Feb 2017 01:41:43 -0800</lastBuildDate>
     <atom:link href="https://wwcreator.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>license</title>
+      <link>https://wwcreator.github.io/license/</link>
+      <pubDate>Thu, 16 Feb 2017 01:41:43 -0800</pubDate>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/license/</guid>
+      <description>
+
+&lt;h1 id=&#34;simple-public-license-simpl-2-0&#34;&gt;Simple Public License (SimPL-2.0)&lt;/h1&gt;
+
+&lt;h2 id=&#34;preamble&#34;&gt;Preamble&lt;/h2&gt;
+
+&lt;p&gt;This Simple Public License 2.0 (SimPL-2.0 for short) is a plain language
+implementation of GPL 2.0.  The words are different, but the goal is the
+same - to guarantee for all users the freedom to share and change
+software.  If anyone wonders about the meaning of the SimPL, they should
+interpret it as consistent with GPL 2.0.&lt;/p&gt;
+
+&lt;h1 id=&#34;simple-public-license-simpl-2-0-1&#34;&gt;Simple Public License (SimPL) 2.0&lt;/h1&gt;
+
+&lt;p&gt;The SimPL applies to the software&amp;rsquo;s source and object code and comes
+with any rights that I have in it (other than trademarks). You agree to
+the SimPL by copying, distributing, or making a derivative work of the
+software.&lt;/p&gt;
+
+&lt;p&gt;You get the royalty free right to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use the software for any purpose;&lt;/li&gt;
+&lt;li&gt;Make derivative works of it (this is called a &amp;laquo;Derived Work&amp;raquo;);&lt;/li&gt;
+&lt;li&gt;Copy and distribute it and any Derived Work.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you distribute the software or a Derived Work, you must give back to
+the community by:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prominently noting the date of any changes you make;&lt;/li&gt;
+&lt;li&gt;Leaving other people&amp;rsquo;s copyright notices, warranty disclaimers, and
+license terms in place;&lt;/li&gt;
+&lt;li&gt;Providing the source code, build scripts, installation scripts, and
+interface definitions in a form that is easy to get and best to
+modify;&lt;/li&gt;
+&lt;li&gt;Licensing it to everyone under SimPL, or substantially similar terms
+(such as GPL 2.0), without adding further restrictions to the rights
+provided;&lt;/li&gt;
+&lt;li&gt;Conspicuously announcing that it is available under that license.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are some things that you must shoulder:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You get NO WARRANTIES. None of any kind;&lt;/li&gt;
+&lt;li&gt;If the software damages you in any way, you may only recover direct
+damages up to the amount you paid for it (that is zero if you did
+not pay anything). You may not recover any other damages, including
+those called &amp;laquo;consequential damages.&amp;raquo; (The state or country where
+you live may not allow you to limit your liability in this way, so
+this may not apply to you);&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The SimPL continues perpetually, except that your license rights end
+automatically if:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You do not abide by the &amp;laquo;give back to the community&amp;raquo; terms (your
+licensees get to keep their rights if they abide);&lt;/li&gt;
+&lt;li&gt;Anyone prevents you from distributing the software under the terms
+of the SimPL.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;license-for-the-license&#34;&gt;License for the License&lt;/h2&gt;
+
+&lt;p&gt;You may do anything that you want with the SimPL text; it&amp;rsquo;s a license
+form to use in any way that you find helpful.  To avoid confusion,
+however, if you change the terms in any way then you may not call your
+license the Simple Public License or the SimPL (but feel free to
+acknowledge that your license is &amp;laquo;based on the Simple Public License&amp;raquo;).&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>forth</title>
@@ -36,7 +117,7 @@
       <guid>https://wwcreator.github.io/2017/02/14/another-test-article/</guid>
       <description>
 
-&lt;h2 id=&#34;this-is-a-title:1fe12548244a1733e38ed5b40fa959e0&#34;&gt;this is a title&lt;/h2&gt;
+&lt;h2 id=&#34;this-is-a-title&#34;&gt;this is a title&lt;/h2&gt;
 
 &lt;p&gt;** bold **
 - first line
@@ -58,15 +139,15 @@
       <guid>https://wwcreator.github.io/2017/02/14/second/</guid>
       <description>
 
-&lt;h1 id=&#34;mysql-常用的备份方式有哪些:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
+&lt;h1 id=&#34;mysql-常用的备份方式有哪些&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
 
 &lt;p&gt;不管是MySQL, Oracle，MariaDB 等关系型数据库，还是 MongoDB，Redis 等 NoSQL 数据库，都有众所周知的&lt;code&gt;Logical Backup&lt;/code&gt; &amp;amp;  &lt;code&gt;Physical Backup&lt;/code&gt; 。&lt;/p&gt;
 
-&lt;h2 id=&#34;mysql-logical-backups:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL Logical Backups&lt;/h2&gt;
+&lt;h2 id=&#34;mysql-logical-backups&#34;&gt;MySQL Logical Backups&lt;/h2&gt;
 
 &lt;p&gt;逻辑备份是按照数据库的逻辑结构（CREATE DATABASE, CREATE TABLE 语句）和内容（INSERT,分隔文本）的方式来存储。非常常用的是当属 MySQL 自带的 &lt;code&gt;mysqldump&lt;/code&gt;和 &lt;code&gt;mydumper&lt;/code&gt; 工具。&lt;/p&gt;
 
-&lt;h3 id=&#34;mysqldump:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;mysqldump&lt;/h3&gt;
+&lt;h3 id=&#34;mysqldump&#34;&gt;mysqldump&lt;/h3&gt;
 
 &lt;p&gt;mysqldump 支持导出部分DB，部分Table， 而且还支持 &amp;ndash;where 行条件过滤（不支持列过滤），InnoDB引擎不锁表导出等。还支持获取导出的 Binlog position，很方便的进行PIT（point in time）recover。&lt;/p&gt;
 
@@ -80,7 +161,7 @@ recover：
 &lt;p&gt;PS: MySQL 5.7.11 版本引入 mysqlpump 工具，支持多线程（粒度到表级别），压缩导入导出。
 mysqlpump的并行导出功能的架构为：队列+线程，允许有多个队列，每个队列下有多个线程，而一个队列可以绑定1个或者多个数据库。但是，对于每张表的导出只能是单个线程的。&lt;/p&gt;
 
-&lt;h3 id=&#34;mydumper:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;mydumper&lt;/h3&gt;
+&lt;h3 id=&#34;mydumper&#34;&gt;mydumper&lt;/h3&gt;
 
 &lt;p&gt;mydumper（&amp;amp;myloader）是用于对MySQL数据库进行多线程备份和恢复的开源 (GNU GPLv3)工具。开发人员主要来自MySQL、Facebook和SkySQL公司，目前由Percona公司开发和维护。
 mydumper 支持多线程备份恢复，粒度到记录级别，对于导出大容量的数据，效率非常高。&lt;/p&gt;
@@ -95,11 +176,11 @@ recover:
   - 主线程将各个库表，分成若干个任务，放入任务队列
   - 执行线程从任务队列读取任务，并执行。&lt;/p&gt;
 
-&lt;h2 id=&#34;mysql-physical-backups:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;MySQL Physical Backups&lt;/h2&gt;
+&lt;h2 id=&#34;mysql-physical-backups&#34;&gt;MySQL Physical Backups&lt;/h2&gt;
 
 &lt;p&gt;物理备份由一系列的存储数据库内容的 raw 格式的文件组成，为了保证一致性，必须关机来拷贝物理文件，但是 Percona 公司的 Xtrabackup 工具完美的解决了关机备份的不可行方案，从而实现热备。&lt;/p&gt;
 
-&lt;h3 id=&#34;xtrabackup:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;Xtrabackup&lt;/h3&gt;
+&lt;h3 id=&#34;xtrabackup&#34;&gt;Xtrabackup&lt;/h3&gt;
 
 &lt;p&gt;Xtrabackup 有两个主要的工具，xtrabackup，innobackup：
 - xtrabackup 只能备份 InnoDB 和 XtraDB 两种数据表
@@ -124,14 +205,14 @@ recover:
 4. 停止拷贝 REDO ,UNLOCK tables
 5. 等待 xtrabackup 结束，备份结束&lt;/p&gt;
 
-&lt;h2 id=&#34;mysqldump-pk-mydumper:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;mysqldump PK mydumper&lt;/h2&gt;
+&lt;h2 id=&#34;mysqldump-pk-mydumper&#34;&gt;mysqldump PK mydumper&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;mysqldump 为 MySQL 原生工具，不需要额外安装，对于导出不是特别大的DB，仍然是非常棒的工具，但对于容量大，但又必须逻辑导出的场景就不是特别合适，需要的时间特别长，不支持多线程导入导出。&lt;/li&gt;
 &lt;li&gt;mydumper 需要额外安装才能使用，支持多线程备份导入，速度快，支持后台模式导出&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;logical-pk-physical-backup:9f7936f9b5c071ae81db818b80a44a0d&#34;&gt;Logical PK Physical Backup&lt;/h2&gt;
+&lt;h2 id=&#34;logical-pk-physical-backup&#34;&gt;Logical PK Physical Backup&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;逻辑备份可以灵活的导出数据（表结构，数据，过滤等）&lt;/li&gt;
@@ -165,7 +246,7 @@ recover:
       <guid>https://wwcreator.github.io/about/</guid>
       <description>
 
-&lt;h3 id=&#34;this-is-a-wwcreator-blog:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;
+&lt;h3 id=&#34;this-is-a-wwcreator-blog&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;
 </description>
     </item>
     
