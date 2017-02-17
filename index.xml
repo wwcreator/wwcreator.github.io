@@ -20,9 +20,9 @@
       <guid>https://wwcreator.github.io/license/</guid>
       <description>
 
-&lt;h1 id=&#34;simple-public-license-simpl-2-0&#34;&gt;Simple Public License (SimPL-2.0)&lt;/h1&gt;
+&lt;h1 id=&#34;simple-public-license-simpl-2-0:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;Simple Public License (SimPL-2.0)&lt;/h1&gt;
 
-&lt;h2 id=&#34;preamble&#34;&gt;Preamble&lt;/h2&gt;
+&lt;h2 id=&#34;preamble:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;Preamble&lt;/h2&gt;
 
 &lt;p&gt;This Simple Public License 2.0 (SimPL-2.0 for short) is a plain language
 implementation of GPL 2.0.  The words are different, but the goal is the
@@ -30,7 +30,7 @@ same - to guarantee for all users the freedom to share and change
 software.  If anyone wonders about the meaning of the SimPL, they should
 interpret it as consistent with GPL 2.0.&lt;/p&gt;
 
-&lt;h1 id=&#34;simple-public-license-simpl-2-0-1&#34;&gt;Simple Public License (SimPL) 2.0&lt;/h1&gt;
+&lt;h1 id=&#34;simple-public-license-simpl-2-0-1:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;Simple Public License (SimPL) 2.0&lt;/h1&gt;
 
 &lt;p&gt;The SimPL applies to the software&amp;rsquo;s source and object code and comes
 with any rights that I have in it (other than trademarks). You agree to
@@ -83,7 +83,7 @@ licensees get to keep their rights if they abide);&lt;/li&gt;
 of the SimPL.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;license-for-the-license&#34;&gt;License for the License&lt;/h2&gt;
+&lt;h2 id=&#34;license-for-the-license:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;License for the License&lt;/h2&gt;
 
 &lt;p&gt;You may do anything that you want with the SimPL text; it&amp;rsquo;s a license
 form to use in any way that you find helpful.  To avoid confusion,
@@ -386,7 +386,7 @@ recover:
       <guid>https://wwcreator.github.io/2017/02/14/hello-world/</guid>
       <description>
 
-&lt;h3 id=&#34;hello-world&#34;&gt;Hello World&lt;/h3&gt;
+&lt;h3 id=&#34;hello-world:bef80f8e73e4e4bfdcc92e5136092d00&#34;&gt;Hello World&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;Hello World
 &lt;/code&gt;&lt;/pre&gt;
