@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>使用 Hugo &#43; GitHub Page 搭建 Blog  &middot; wwcreator Blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="Hugo, Blog, ">
+
+
+<meta property="og:title" content="使用 Hugo &#43; GitHub Page 搭建 Blog  &middot; wwcreator Blog ">
+<meta property="og:site_name" content="wwcreator Blog"/>
+<meta property="og:url" content="https://wwcreator.github.io/2017/02/14/%E4%BD%BF%E7%94%A8-hugo--github-page-%E6%90%AD%E5%BB%BA-blog/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2017-02-14T21:11:48-08:00" />
+<meta property="og:article:modified_time" content="2017-02-14T21:11:48-08:00" />
+
+  
+    
+<meta property="og:article:tag" content="Hugo">
+    
+<meta property="og:article:tag" content="Blog">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="使用 Hugo &#43; GitHub Page 搭建 Blog" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://wwcreator.github.io/2017/02/14/%E4%BD%BF%E7%94%A8-hugo--github-page-%E6%90%AD%E5%BB%BA-blog/" />
+<meta name="twitter:domain" content="https://wwcreator.github.io/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "使用 Hugo \x2b GitHub Page 搭建 Blog",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-02-14",
+    "description": "",
+    "wordCount":  673 
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://wwcreator.github.io/2017/02/14/%E4%BD%BF%E7%94%A8-hugo--github-page-%E6%90%AD%E5%BB%BA-blog/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://wwcreator.github.io/github-icon.png">
+<link href="https://wwcreator.github.io/icon_new.jpg" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://wwcreator.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wwcreator.github.io/css/style.css">
+<link rel="stylesheet" href="https://wwcreator.github.io/css/highlight/default.css">
+
+  
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://wwcreator.github.io/">
+  wwcreator
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  just be supreme
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://wwcreator.github.io/">home</a>
+
+
+  
+<a href="https://wwcreator.github.io/about">About</a>
+
+<a href="https://wwcreator.github.io/archive" title="show list of archive">Archive</a>
+
+<a href="https://wwcreator.github.io/categories" title="Show list of categories">Categories</a>
+
+<a href="https://wwcreator.github.io/post" title="Show list of posts">Posts</a>
+
+<a href="https://wwcreator.github.io/tags" title="show list of tags">Tags</a>
+
+<a href="https://wwcreator.github.io/topics" title="show list of topic">Topics</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:yuwen_qing@126.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/wwcreator">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>使用 Hugo &#43; GitHub Page 搭建 Blog
+</h1>
+
+  <div class="metas">
+<time datetime="2017-02-14">14 Feb, 2017</time>
+
+
+
+  
+  &middot; Read in about 4 min
+  &middot; (673 Words)
+  <br>
+  
+<a class="label" href="https://wwcreator.github.io/tags/hugo">Hugo</a>
+
+<a class="label" href="https://wwcreator.github.io/tags/blog">Blog</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h2 id="我想搭建一个自己的blog:8a6bcd0efa30570889e863020952e1cd">我想搭建一个自己的Blog</h2>
+
+<p>许久以前，一直想搭一个自己的博客，很不想用第三方的平台，诸多的限制，样式不美观等等，无奈自己没有好好研究怎么使用工具来快速生成，听的最多的是 Jkyll ，Haxo，一看Install Document，望而却步，直到看到 Hugo 工具，简单灵活，我用了两天的时间来研究并部署成功了，分享给有需要的人。</p>
+
+<h2 id="step-1-install-hugo-on-ubuntu-16-0-4:8a6bcd0efa30570889e863020952e1cd">Step 1. Install Hugo on Ubuntu-16.0.4</h2>
+
+<p>软件的安装，最方便的非 apt-get 莫属。</p>
+
+<pre><code>  apt-get install Hugo
+  其余的安装方式可参考官方文档:
+  https://gohugo.io/overview/installing/
+</code></pre>
+
+<h2 id="step-2-hugo-创建-site:8a6bcd0efa30570889e863020952e1cd">Step 2. Hugo 创建 Site</h2>
+
+<p>安装完成后，开始创建自己的 Site。</p>
+
+<pre><code>mkdir -p /data/www/
+cd /data/www
+# create new site
+hugo new site wwcreator
+cd /data/www/wwcreator
+tree -a
+.
+|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- layouts
+`-- static
+
+5 directories, 1 file
+</code></pre>
+
+<p>可以看到创建的新的 site 的目录结构.</p>
+
+<blockquote>
+<ul>
+<li>archetypes: You can create new content files in Hugo using the hugo new command. When you run that command, it adds few configuration properties to the post like date and title. Archetype allows you to define your own configuration properties that will be added to the post front matter whenever hugo new command is used.</li>
+<li>config.toml: Every website should have a configuration file at the root. By default, the configuration file uses TOML format but you can also use YAML or JSON formats as well. TOML is minimal configuration file format that’s easy to read due to obvious semantics. The configuration settings mentioned in the config.toml are applied to the full site. These configuration settings include baseURL and title of the website.</li>
+<li>content: This is where you will store content of the website. Inside content, you will create sub-directories for different sections. Let’s suppose your website has three actions – blog, article, and tutorial then you will have three different directories for each of them inside the content directory. The name of the section i.e. blog, article, or tutorial will be used by Hugo to apply a specific layout applicable to that section.</li>
+<li>data: This directory is used to store configuration files that can be used by Hugo when generating your website. You can write these files in YAML, JSON, or TOML format.</li>
+<li>layouts: The content inside this directory is used to specify how your content will be converted into the static website.</li>
+<li>static: This directory is used to store all the static content that your website will need like images, CSS, JavaScript or other static content.</li>
+</ul>
+</blockquote>
+
+<h2 id="step-3-add-content:8a6bcd0efa30570889e863020952e1cd">Step 3. Add content</h2>
+
+<pre><code>hugo new post/first.md
+tree -a content
+vim content/first.md
+</code></pre>
+
+<pre><code>+++
+date = &quot;2017-02-14T11:11:48-08:00&quot;
+draft = true
+title = &quot;first&quot;
++++
+</code></pre>
+
+<p><code>+++</code> 里的内容是该文章的<code>TOML</code>配置信息， 也叫做 <code>front matter</code>。
+在文档里添加内容（格式为markdown 格式哦）：</p>
+
+<pre><code>+++
+date = &quot;2017-02-14T11:11:48-08:00&quot;
+draft = true
+title = &quot;first&quot;
++++
+`hello world`
+</code></pre>
+
+<p>保存退出，第一个文档完成。</p>
+
+<h2 id="step-4-启动-hugo-瞧瞧:8a6bcd0efa30570889e863020952e1cd">Step 4. 启动 hugo 瞧瞧</h2>
+
+<pre><code>hugo server --baseURL=http://192.168.x.xx:80 \
+              --port=80 \
+              --buildDrafts \
+              --appendPort=false \
+              --bind=192.168.x.xxx
+</code></pre>
+
+<pre><code>1 of 1 draft rendered
+0 future content
+1 pages created
+0 paginator pages created
+0 tags created
+0 categories created
+in 6 ms
+Watching for changes in /data/www/wwcreator/{data,content,layouts,static}
+Serving pages from memory
+Web Server is available at http://192.168.x.xx:80 (bind address 192.168.x.xxx)
+Press Ctrl+C to stop
+</code></pre>
+
+<p>访问 <a href="http://192.168.x.xx:80">http://192.168.x.xx:80</a> 然而什么都没有显示，没有我想看到的<code>Hello world</code>，因为我们还需要安装 <code>theme</code>。</p>
+
+<h2 id="step-5-install-theme:8a6bcd0efa30570889e863020952e1cd">Step 5. Install theme</h2>
+
+<pre><code>cd themes
+git clone https://GitHub.com/enten/hyde-y
+更加详细的配置，可以参考：
+  http://www.gohugo.org/theme/hyde-y/
+</code></pre>
+
+<pre><code>hugo server --baseURL=http://192.168.x.xx:80 \
+              --port=80 \
+              --buildDrafts \
+              --appendPort=false \
+              --bind=192.168.x.xxx \
+              --theme=hyde-y
+# 再次刷新页面，发现主题已经生效，内容也正常显示了。
+</code></pre>
+
+<p>hugo blog 我们已经准备完成，开始创建 GitHub Page。</p>
+
+<h2 id="step-6-使用-github-page:8a6bcd0efa30570889e863020952e1cd">Step 6. 使用 GitHub Page</h2>
+
+<blockquote>
+<p>GitHub Pages is a static site hosting service.</p>
+</blockquote>
+
+<p>在 GitHub 上新建一个 username.github.io的project ，它默认会生成: <a href="http://username.github.io/">http://username.github.io/</a> 的域名。</p>
+
+<p>但是现在repository没有任何code，所以接下来通过 hugo 生成静态页面并上传到 GitHub 上。</p>
+
+<h2 id="step-7-本地生成静态页面:8a6bcd0efa30570889e863020952e1cd">Step 7. 本地生成静态页面</h2>
+
+<pre><code># 注意与本地的区别
+hugo server --baseURL=http://username.github.io \
+              --buildDrafts \
+              --theme=hyde-y
+tree -a
+.
+|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- public
+|-- layouts
+`-- static
+
+6 directories, 1 file
+</code></pre>
+
+<p>生成的静态页面存储在 public 目录，马上要接近成功了。</p>
+
+<h2 id="step-8-本地服务配置-github-信息:8a6bcd0efa30570889e863020952e1cd">Step 8. 本地服务配置 GitHub 信息</h2>
+
+<pre><code>ssh-keygen
+cat .ssh/id_rsa.pub
+将秘钥的值复制，使用浏览器登陆到 GitHub ，
+在 [Settings] -&gt; [SSH and GPG keys] -&gt; [New SSH Key] 粘贴保存。则本地可以跟 GitHub 服务器通信。
+git config --global user.name &quot;你的名字&quot;
+git config --global user.email &quot;your_email@youremail.com&quot;
+</code></pre>
+
+<h2 id="step-9-上传到-github:8a6bcd0efa30570889e863020952e1cd">Step 9. 上传到 GitHub</h2>
+
+<pre><code>cd public
+git init   # init
+# clone with ssh not https
+git add remote origin git@GitHub.com:wwcreator/wwcreator.github.io.git
+git status  # show the changes
+git add -A  
+git commit -m &quot;first commit&quot;  # commit
+git push origin master  # push
+</code></pre>
+
+<pre><code># git push origin master
+Counting objects: 19, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (16/16), done.
+Writing objects: 100% (19/19), 5.84 KiB | 0 bytes/s, done.
+Total 19 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To git@GitHub.com:wwcreator/wwcreator.github.io.git
+ * [new branch]      master -&gt; master
+</code></pre>
+
+<p>访问 <a href="http://wwcreator.github.io">http://wwcreator.github.io</a> ，大功告成。有很多好看的主题可以选择，但是我还是选择了 hyde-y ，是我尝试了 N 多主题后的结论，简单美观，如果需要修改样式，可以参考下一篇文章。</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://wwcreator.github.io/2017/02/14/mysql-%E5%B8%B8%E7%94%A8%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B/" title="MySQL 常用备份工具简介">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//http-wwcreator-github-io.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+<a href="https://wwcreator.github.io/license">license</a>
+
+
+  &nbsp; &nbsp; &nbsp; &nbsp; <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2017 wwcreator.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//http-wwcreator-github-io.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="https://wwcreator.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+
