@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>First on wwcreator Blog</title>
+    <title>First on 户枢不蠹</title>
     <link>https://wwcreator.github.io/tags/first/</link>
-    <description>Recent content in First on wwcreator Blog</description>
+    <description>Recent content in First on 户枢不蠹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>yuwen_qing@126.com (wwcreator)</managingEditor>
@@ -20,7 +20,7 @@
       <guid>https://wwcreator.github.io/2017/02/14/hello-world/</guid>
       <description>
 
-&lt;h3 id=&#34;hello-world:bef80f8e73e4e4bfdcc92e5136092d00&#34;&gt;Hello World&lt;/h3&gt;
+&lt;h3 id=&#34;hello-world&#34;&gt;Hello World&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;Hello World
 &lt;/code&gt;&lt;/pre&gt;
