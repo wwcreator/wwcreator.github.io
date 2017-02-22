@@ -57,7 +57,7 @@
     },
     "datePublished": "2017-02-14",
     "description": "",
-    "wordCount":  673 
+    "wordCount":  675 
   }
 </script>
 
@@ -190,7 +190,7 @@
 
   
   &middot; Read in about 4 min
-  &middot; (673 Words)
+  &middot; (675 Words)
   <br>
   
 <a class="label" href="https://wwcreator.github.io/tags/hugo">Hugo</a>
@@ -211,11 +211,11 @@
   <div class="container content">
   
 
-<h2 id="我想搭建一个自己的blog">我想搭建一个自己的Blog</h2>
+<h2 id="我想搭建一个自己的blog:8a6bcd0efa30570889e863020952e1cd">我想搭建一个自己的Blog</h2>
 
 <p>许久以前，一直想搭一个自己的博客，很不想用第三方的平台，诸多的限制，样式不美观等等，无奈自己没有好好研究怎么使用工具来快速生成，听的最多的是 Jkyll ，Haxo，一看Install Document，望而却步，直到看到 Hugo 工具，简单灵活，我用了两天的时间来研究并部署成功了，分享给有需要的人。</p>
 
-<h2 id="step-1-install-hugo-on-ubuntu-16-0-4">Step 1. Install Hugo on Ubuntu-16.0.4</h2>
+<h2 id="step-1-install-hugo-on-ubuntu-16-0-4:8a6bcd0efa30570889e863020952e1cd">Step 1. Install Hugo on Ubuntu-16.0.4</h2>
 
 <p>软件的安装，最方便的非 apt-get 莫属。</p>
 
@@ -224,7 +224,7 @@
   https://gohugo.io/overview/installing/
 </code></pre>
 
-<h2 id="step-2-hugo-创建-site">Step 2. Hugo 创建 Site</h2>
+<h2 id="step-2-hugo-创建-site:8a6bcd0efa30570889e863020952e1cd">Step 2. Hugo 创建 Site</h2>
 
 <p>安装完成后，开始创建自己的 Site。</p>
 
@@ -258,7 +258,7 @@ tree -a
 </ul>
 </blockquote>
 
-<h2 id="step-3-add-content">Step 3. Add content</h2>
+<h2 id="step-3-add-content:8a6bcd0efa30570889e863020952e1cd">Step 3. Add content</h2>
 
 <pre><code>hugo new post/first.md
 tree -a content
@@ -285,7 +285,7 @@ title = &quot;first&quot;
 
 <p>保存退出，第一个文档完成。</p>
 
-<h2 id="step-4-启动-hugo-瞧瞧">Step 4. 启动 hugo 瞧瞧</h2>
+<h2 id="step-4-启动-hugo-瞧瞧:8a6bcd0efa30570889e863020952e1cd">Step 4. 启动 hugo 瞧瞧</h2>
 
 <pre><code>hugo server --baseURL=http://192.168.x.xx:80 \
               --port=80 \
@@ -309,12 +309,13 @@ Press Ctrl+C to stop
 
 <p>访问 <a href="http://192.168.x.xx:80">http://192.168.x.xx:80</a> 然而什么都没有显示，没有我想看到的<code>Hello world</code>，因为我们还需要安装 <code>theme</code>。</p>
 
-<h2 id="step-5-install-theme">Step 5. Install theme</h2>
+<h2 id="step-5-install-theme:8a6bcd0efa30570889e863020952e1cd">Step 5. Install theme</h2>
 
 <pre><code>cd themes
 git clone https://GitHub.com/enten/hyde-y
 更加详细的配置，可以参考：
   http://www.gohugo.org/theme/hyde-y/
+  最初按照这个主题的 ReadMe.md 步骤来配置，后续熟练后，可以自己慢调
 </code></pre>
 
 <pre><code>hugo server --baseURL=http://192.168.x.xx:80 \
@@ -328,7 +329,7 @@ git clone https://GitHub.com/enten/hyde-y
 
 <p>hugo blog 我们已经准备完成，开始创建 GitHub Page。</p>
 
-<h2 id="step-6-使用-github-page">Step 6. 使用 GitHub Page</h2>
+<h2 id="step-6-使用-github-page:8a6bcd0efa30570889e863020952e1cd">Step 6. 使用 GitHub Page</h2>
 
 <blockquote>
 <p>GitHub Pages is a static site hosting service.</p>
@@ -338,10 +339,10 @@ git clone https://GitHub.com/enten/hyde-y
 
 <p>但是现在repository没有任何code，所以接下来通过 hugo 生成静态页面并上传到 GitHub 上。</p>
 
-<h2 id="step-7-本地生成静态页面">Step 7. 本地生成静态页面</h2>
+<h2 id="step-7-本地生成静态页面:8a6bcd0efa30570889e863020952e1cd">Step 7. 本地生成静态页面</h2>
 
 <pre><code># 注意与本地的区别
-hugo server --baseURL=http://username.github.io \
+hugo  --baseURL=http://username.github.io \
               --buildDrafts \
               --theme=hyde-y
 tree -a
@@ -359,7 +360,7 @@ tree -a
 
 <p>生成的静态页面存储在 public 目录，马上要接近成功了。</p>
 
-<h2 id="step-8-本地服务配置-github-信息">Step 8. 本地服务配置 GitHub 信息</h2>
+<h2 id="step-8-本地服务配置-github-信息:8a6bcd0efa30570889e863020952e1cd">Step 8. 本地服务配置 GitHub 信息</h2>
 
 <pre><code>ssh-keygen
 cat .ssh/id_rsa.pub
@@ -369,7 +370,7 @@ git config --global user.name &quot;你的名字&quot;
 git config --global user.email &quot;your_email@youremail.com&quot;
 </code></pre>
 
-<h2 id="step-9-上传到-github">Step 9. 上传到 GitHub</h2>
+<h2 id="step-9-上传到-github:8a6bcd0efa30570889e863020952e1cd">Step 9. 上传到 GitHub</h2>
 
 <pre><code>cd public
 git init   # init
@@ -409,6 +410,10 @@ To git@GitHub.com:wwcreator/wwcreator.github.io.git
     </a>
     
 
+    
+    <a class="next" href="https://wwcreator.github.io/2017/02/21/hugo-%E6%B7%BB%E5%8A%A0%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF/" title="Hugo 添加站点统计信息">
+      Next
+    </a>
     
 
   

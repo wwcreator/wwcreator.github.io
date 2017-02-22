@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>迁移 on 户枢不蠹</title>
+    <link>https://wwcreator.github.io/tags/%E8%BF%81%E7%A7%BB/</link>
+    <description>Recent content in 迁移 on 户枢不蠹</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>yuwen_qing@126.com (wwcreator)</managingEditor>
+    <webMaster>yuwen_qing@126.com (wwcreator)</webMaster>
+    <copyright>(c) 2017 wwcreator.</copyright>
+    <lastBuildDate>Wed, 22 Feb 2017 13:16:48 -0800</lastBuildDate>
+    <atom:link href="https://wwcreator.github.io/tags/%E8%BF%81%E7%A7%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>博客园迁移到Hugo</title>
+      <link>https://wwcreator.github.io/2017/02/22/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%BF%81%E7%A7%BB%E5%88%B0hugo/</link>
+      <pubDate>Wed, 22 Feb 2017 13:16:48 -0800</pubDate>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/02/22/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%BF%81%E7%A7%BB%E5%88%B0hugo/</guid>
+      <description>
+
+&lt;p&gt;对于早期的很多用户来说，一直在博客园上写自己的博文，但是慢慢的，大家开始都有自己的专属 Blog 了，那之前的 Post 肿么办呢？&lt;/p&gt;
+
+&lt;p&gt;来，我教你。&lt;/p&gt;
+
+&lt;h2 id=&#34;备份博客园数据:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;备份博客园数据&lt;/h2&gt;
+
+&lt;p&gt;备份这件小事，应该难不倒你，但是博客园有限制，工作日在「08:00-18:00」,不能备份，所以备份需要挑时间的喔。备份生成的是一份 XML 格式的文件，下一步，continue 。&lt;/p&gt;
+
+&lt;h3 id=&#34;解析-xml-文件的内容:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
+
+&lt;h4 id=&#34;注意:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;注意：&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;备份的 XML 没有美化成标准的 XML 格式，所以需要去网站上搜索进行 XML 格式美化再保存替换。&lt;/li&gt;
+&lt;li&gt;博文的内容被 &lt;code&gt;&amp;lt;![CDATA[&lt;/code&gt; &lt;code&gt;]]&lt;/code&gt; 包含，如果不指定获取所有内容参数，则会被解析忽略。&lt;/li&gt;
+&lt;li&gt;生成 MD 文档 front matter 为 TOML 格式。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面看姐的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+
+import os
+from xml.dom.minidom import parse
+import sys
+reload(sys)
+sys.setdefaultencoding(&#39;utf-8&#39;)
+
+BACKUP_FILE = &#39;CNBlogs_BlogBackup_131_201602_201702_2.xml&#39;
+DOMTree = parse(BACKUP_FILE)
+root = DOMTree.documentElement
+blog_title = root.getElementsByTagName(&#39;title&#39;)[0].childNodes[0].data
+if not os.path.isdir(blog_title):
+    os.mkdir(blog_title)
+
+blogs = root.getElementsByTagName(&#39;item&#39;)
+
+tag = [&#39;算法&#39;,&#39;C++&#39;, &#39;git&#39;, &#39;GPU&#39;, &#39;驾驶&#39;, &#39;DL&#39;, &#39;TORCS&#39;, &#39;服务器&#39; ,&#39;codility&#39; ,&#39;编译器&#39; ,&#39;python&#39; ,&#39;机器&#39;,&#39;强化&#39;,&#39;配置&#39;,&#39;ubuntu&#39;]
+
+
+for blog in blogs:
+    try:
+        title = blog.getElementsByTagName(&#39;title&#39;)[0].childNodes[0].data
+        origin_link = blog.getElementsByTagName(&#39;link&#39;)[0].childNodes[0].data
+        date = blog.getElementsByTagName(&#39;pubDate&#39;)[0].childNodes[0].data
+        # content = blog.getElementsByTagName(&#39;description&#39;)[0].childNodes[0].data
+        content = blog.getElementsByTagName(&#39;description&#39;)[0].firstChild.wholeText
+        #categories
+        for test in tag:
+            if title.find(test) != -1:
+                categories = test
+                break
+            else:
+                categories = &#39;Life&#39;
+        with open(blog_title + os.sep + title + &#39;.md&#39;, &#39;w&#39;) as f:
+            f.write(&#39;+++ \n&#39;)
+            f.write(&#39;title = &amp;quot;%s&amp;quot; \n&#39; % title)
+            f.write(&#39;date = &amp;quot;%s&amp;quot; \n&#39; % date)
+            f.write(&#39;categories = [&amp;quot;%s&amp;quot;] \n&#39; % categories)
+            f.write(&#39;+++ \n&#39;)
+            f.write(content)
+            f.write(&#39;\n\n&#39;)
+            f.close()
+    except Exception, e:
+        print e
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行该脚本，会生成所有的博文。拷贝到 Hugo 的content/post/ 目录，在本地预览效果吧，如果没有问题就 &lt;code&gt;Push&lt;/code&gt; 到 &lt;code&gt;Github&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;结束语:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;结束语&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用这样是获取不到数据：&lt;code&gt;content = blog.getElementsByTagName(&#39;description&#39;)[0].childNodes[0].data&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;需要使用 wholeText 来读取&lt;code&gt;&amp;lt;![CDATA[&lt;/code&gt; &lt;code&gt;]]&lt;/code&gt;里的内容。
+&lt;code&gt;content = blog.getElementsByTagName(&#39;description&#39;)[0].firstChild.wholeText&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

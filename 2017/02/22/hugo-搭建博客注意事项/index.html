@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Posts  &middot; 户枢不蠹</title>
+  <title>Hugo 搭建博客注意事项  &middot; 户枢不蠹</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,22 +14,56 @@
 
 <meta name="description" content="" />
 
-<meta name="keywords" content="">
+<meta name="keywords" content="Hugo, Blog, ">
 
 
-<meta property="og:title" content="Posts  &middot; 户枢不蠹 ">
+<meta property="og:title" content="Hugo 搭建博客注意事项  &middot; 户枢不蠹 ">
 <meta property="og:site_name" content="户枢不蠹"/>
-<meta property="og:url" content="https://wwcreator.github.io/post/" />
+<meta property="og:url" content="https://wwcreator.github.io/2017/02/22/hugo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" />
 <meta property="og:locale" content="en-EN">
 
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2017-02-22T12:11:48-08:00" />
+<meta property="og:article:modified_time" content="2017-02-22T12:11:48-08:00" />
+
+  
+    
+<meta property="og:article:tag" content="Hugo">
+    
+<meta property="og:article:tag" content="Blog">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Hugo 搭建博客注意事项" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://wwcreator.github.io/2017/02/22/hugo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" />
+<meta name="twitter:domain" content="https://wwcreator.github.io/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Hugo 搭建博客注意事项",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-02-22",
+    "description": "",
+    "wordCount":  23 
+  }
+</script>
 
 
 
-<link href="https://wwcreator.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="Posts" />
-
-<link rel="canonical" href="https://wwcreator.github.io/post/" />
+<link rel="canonical" href="https://wwcreator.github.io/2017/02/22/hugo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" />
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://wwcreator.github.io/we3.png">
 <link href="https://wwcreator.github.io/we3.png" rel="icon">
@@ -144,93 +178,102 @@
 </header>
 
 
-<section id="main-content" class="container main_content section">
-  <header class="container">
-    <h1>Posts
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Hugo 搭建博客注意事项
 </h1>
 
-  </header>
+  <div class="metas">
+<time datetime="2017-02-22">22 Feb, 2017</time>
+
+
+
   
-    <div class="container hat">
-  <time datetime="2017-02-22">22 Feb, 2017</time>
+  &middot; Read in about 1 min
+  &middot; (23 Words)
+  <br>
+  
+<a class="label" href="https://wwcreator.github.io/tags/hugo">Hugo</a>
 
-  &nbsp; &nbsp;  <a href="https://wwcreator.github.io/2017/02/22/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%BF%81%E7%A7%BB%E5%88%B0hugo/">博客园迁移到Hugo
-</a>
+<a class="label" href="https://wwcreator.github.io/tags/blog">Blog</a>
 
+
+
+&nbsp;&nbsp;
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h2 id="标题不能使用-号:e3d4e8203f1f66ba4b5837ed21246063">标题不能使用 + 号</h2>
+
+<p>在v0.18 mac 版本中，如果 <code>title</code> 包含 <code>+</code> ，虽然不报任何错误，但是不会生成具体的静态页面。</p>
+
+<h2 id="google-baidu-完全搜索不到博文:e3d4e8203f1f66ba4b5837ed21246063">google，baidu 完全搜索不到博文</h2>
+
+<p>因为google，baidu 还没有收录我们的URL，所以在google 里输入：site:网址URL 如果能搜索出来则说明，google 已经添加我们的网址。不能则需要提交网址到 google。百度同理。
+<a href="https://www.google.com/webmasters/tools/home">https://www.google.com/webmasters/tools/home</a></p>
+
+<h2 id="hugo-不支持站内搜索:e3d4e8203f1f66ba4b5837ed21246063">Hugo 不支持站内搜索</h2>
+
+<h2 id="hugo-还不支持生成目录树:e3d4e8203f1f66ba4b5837ed21246063">Hugo 还不支持生成目录树</h2>
 
 </div>
 
 
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
   
-    <div class="container hat">
-  <time datetime="2017-02-22">22 Feb, 2017</time>
+  
 
-  &nbsp; &nbsp;  <a href="https://wwcreator.github.io/2017/02/22/hugo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Hugo 搭建博客注意事项
-</a>
+    
+    <a class="prev" href="https://wwcreator.github.io/2017/02/22/%E5%AE%9A%E5%88%B6%E4%B8%BB%E9%A2%98--hyde-y/" title="定制主题 &amp; hyde-y">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="https://wwcreator.github.io/2017/02/22/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%BF%81%E7%A7%BB%E5%88%B0hugo/" title="博客园迁移到Hugo">
+      Next
+    </a>
+    
+
+  
 
 
 </div>
 
-
+  <div class="container comments">
+  <h2>Comments</h2>
   
-    <div class="container hat">
-  <time datetime="2017-02-22">22 Feb, 2017</time>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
 
-  &nbsp; &nbsp;  <a href="https://wwcreator.github.io/2017/02/22/%E5%AE%9A%E5%88%B6%E4%B8%BB%E9%A2%98--hyde-y/">定制主题 &amp; hyde-y
-</a>
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//http-wwcreator-github-io.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 </div>
 
+</footer>
 
-  
-    <div class="container hat">
-  <time datetime="2017-02-21">21 Feb, 2017</time>
-
-  &nbsp; &nbsp;  <a href="https://wwcreator.github.io/2017/02/21/hugo-%E6%B7%BB%E5%8A%A0%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF/">Hugo 添加站点统计信息
-</a>
-
-
-</div>
-
-
-  
-    <div class="container hat">
-  <time datetime="2017-02-14">14 Feb, 2017</time>
-
-  &nbsp; &nbsp;  <a href="https://wwcreator.github.io/2017/02/14/%E4%BD%BF%E7%94%A8-hugo--github-page-%E6%90%AD%E5%BB%BA-blog/">使用 Hugo &#43; GitHub Page 搭建 Blog
-</a>
-
-
-</div>
-
-
-  
-    <div class="container hat">
-  <time datetime="2017-02-14">14 Feb, 2017</time>
-
-  &nbsp; &nbsp;  <a href="https://wwcreator.github.io/2017/02/14/mysql-%E5%B8%B8%E7%94%A8%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B/">MySQL 常用备份工具简介
-</a>
-
-
-</div>
-
-
-  
-    <div class="container hat">
-  <time datetime="2017-02-14">14 Feb, 2017</time>
-
-  &nbsp; &nbsp;  <a href="https://wwcreator.github.io/2017/02/14/hello-world/">Hello World
-</a>
-
-
-</div>
-
-
-  
-  
-
-</section>
+</article>
       <footer id="main-footer" class="container main_footer">
   
 

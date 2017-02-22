@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>MySQL 常用备份工具简介  &middot; 户枢不蠹</title>
+  <title>博客园迁移到Hugo  &middot; 户枢不蠹</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,25 +14,27 @@
 
 <meta name="description" content="" />
 
-<meta name="keywords" content="MySQL, BackUp, ">
+<meta name="keywords" content="Hugo, Blog, 迁移, ">
 
 
-<meta property="og:title" content="MySQL 常用备份工具简介  &middot; 户枢不蠹 ">
+<meta property="og:title" content="博客园迁移到Hugo  &middot; 户枢不蠹 ">
 <meta property="og:site_name" content="户枢不蠹"/>
-<meta property="og:url" content="https://wwcreator.github.io/2017/02/14/mysql-%E5%B8%B8%E7%94%A8%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B/" />
+<meta property="og:url" content="https://wwcreator.github.io/2017/02/22/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%BF%81%E7%A7%BB%E5%88%B0hugo/" />
 <meta property="og:locale" content="en-EN">
 
 
 <meta property="og:type" content="article" />
 <meta property="og:description" content=""/>
-<meta property="og:article:published_time" content="2017-02-14T21:11:31-08:00" />
-<meta property="og:article:modified_time" content="2017-02-14T21:11:31-08:00" />
+<meta property="og:article:published_time" content="2017-02-22T13:16:48-08:00" />
+<meta property="og:article:modified_time" content="2017-02-22T13:16:48-08:00" />
 
   
     
-<meta property="og:article:tag" content="MySQL">
+<meta property="og:article:tag" content="Hugo">
     
-<meta property="og:article:tag" content="BackUp">
+<meta property="og:article:tag" content="Blog">
+    
+<meta property="og:article:tag" content="迁移">
     
   
 
@@ -40,9 +42,9 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@" />
-<meta name="twitter:title" content="MySQL 常用备份工具简介" />
+<meta name="twitter:title" content="博客园迁移到Hugo" />
 <meta name="twitter:description" content="" />
-<meta name="twitter:url" content="https://wwcreator.github.io/2017/02/14/mysql-%E5%B8%B8%E7%94%A8%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B/" />
+<meta name="twitter:url" content="https://wwcreator.github.io/2017/02/22/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%BF%81%E7%A7%BB%E5%88%B0hugo/" />
 <meta name="twitter:domain" content="https://wwcreator.github.io/">
   
 
@@ -50,20 +52,20 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "MySQL 常用备份工具简介",
+    "headline": "博客园迁移到Hugo",
     "author": {
       "@type": "Person",
       "name": "http://profiles.google.com/+?rel=author"
     },
-    "datePublished": "2017-02-14",
+    "datePublished": "2017-02-22",
     "description": "",
-    "wordCount":  216 
+    "wordCount":  179 
   }
 </script>
 
 
 
-<link rel="canonical" href="https://wwcreator.github.io/2017/02/14/mysql-%E5%B8%B8%E7%94%A8%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B/" />
+<link rel="canonical" href="https://wwcreator.github.io/2017/02/22/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%BF%81%E7%A7%BB%E5%88%B0hugo/" />
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://wwcreator.github.io/we3.png">
 <link href="https://wwcreator.github.io/we3.png" rel="icon">
@@ -180,22 +182,24 @@
 
 <article id="main-content" class="container main_content single">
   <header class="container hat">
-  <h1>MySQL 常用备份工具简介
+  <h1>博客园迁移到Hugo
 </h1>
 
   <div class="metas">
-<time datetime="2017-02-14">14 Feb, 2017</time>
+<time datetime="2017-02-22">22 Feb, 2017</time>
 
 
 
   
-  &middot; Read in about 2 min
-  &middot; (216 Words)
+  &middot; Read in about 1 min
+  &middot; (179 Words)
   <br>
   
-<a class="label" href="https://wwcreator.github.io/tags/mysql">MySQL</a>
+<a class="label" href="https://wwcreator.github.io/tags/hugo">Hugo</a>
 
-<a class="label" href="https://wwcreator.github.io/tags/backup">BackUp</a>
+<a class="label" href="https://wwcreator.github.io/tags/blog">Blog</a>
+
+<a class="label" href="https://wwcreator.github.io/tags/%E8%BF%81%E7%A7%BB">迁移</a>
 
 
 
@@ -211,86 +215,81 @@
   <div class="container content">
   
 
-<h1 id="mysql-常用的备份方式有哪些">MySQL 常用的备份方式有哪些 ?</h1>
+<p>对于早期的很多用户来说，一直在博客园上写自己的博文，但是慢慢的，大家开始都有自己的专属 Blog 了，那之前的 Post 肿么办呢？</p>
 
-<p>不管是MySQL, Oracle，MariaDB 等关系型数据库，还是 MongoDB，Redis 等 NoSQL 数据库，都有众所周知的<code>Logical Backup</code> &amp;  <code>Physical Backup</code> 。</p>
+<p>来，我教你。</p>
 
-<h2 id="mysql-logical-backups">MySQL Logical Backups</h2>
+<h2 id="备份博客园数据:8480fb8dece3f835b0e0e52af9ea4e0a">备份博客园数据</h2>
 
-<p>逻辑备份是按照数据库的逻辑结构（CREATE DATABASE, CREATE TABLE 语句）和内容（INSERT,分隔文本）的方式来存储。非常常用的是当属 MySQL 自带的 <code>mysqldump</code>和 <code>mydumper</code> 工具。</p>
+<p>备份这件小事，应该难不倒你，但是博客园有限制，工作日在「08:00-18:00」,不能备份，所以备份需要挑时间的喔。备份生成的是一份 XML 格式的文件，下一步，continue 。</p>
 
-<h3 id="mysqldump">mysqldump</h3>
+<h3 id="解析-xml-文件的内容:8480fb8dece3f835b0e0e52af9ea4e0a">解析 XML 文件的内容</h3>
 
-<p>mysqldump 支持导出部分DB，部分Table， 而且还支持 &ndash;where 行条件过滤（不支持列过滤），InnoDB引擎不锁表导出等。还支持获取导出的 Binlog position，很方便的进行PIT（point in time）recover。</p>
-
-<pre><code>for example:
-  mysqldump -u test -p -P 3307 -h 127.0.0.1 --single-transaction --master-data=2 --database test_dump --tables test1 &gt; /test/test_dump_test1.sql
-
-recover：
-  mysql -u test -p -P 3307 -h 127.0.0.1 -D test_dump -e &quot;source /test/test_dump_test1.sql&quot; &gt;import.log 2&gt;&amp;1
-</code></pre>
-
-<p>PS: MySQL 5.7.11 版本引入 mysqlpump 工具，支持多线程（粒度到表级别），压缩导入导出。
-mysqlpump的并行导出功能的架构为：队列+线程，允许有多个队列，每个队列下有多个线程，而一个队列可以绑定1个或者多个数据库。但是，对于每张表的导出只能是单个线程的。</p>
-
-<h3 id="mydumper">mydumper</h3>
-
-<p>mydumper（&amp;myloader）是用于对MySQL数据库进行多线程备份和恢复的开源 (GNU GPLv3)工具。开发人员主要来自MySQL、Facebook和SkySQL公司，目前由Percona公司开发和维护。
-mydumper 支持多线程备份恢复，粒度到记录级别，对于导出大容量的数据，效率非常高。</p>
-
-<pre><code>for example:
-  mydumper -u test -p -P 3307 -h 127.0.0.1 -B test_dump -T test1 -b -t 16 -c -o /test/test_dump_test1
-recover:
-  myloader -u test -p -P 3307 -h 127.0.0.1 --directory=/test/test_dump_test1 --overwrite-tables -B test_dump
-</code></pre>
-
-<p>备份原理：
-  - 主线程将各个库表，分成若干个任务，放入任务队列
-  - 执行线程从任务队列读取任务，并执行。</p>
-
-<h2 id="mysql-physical-backups">MySQL Physical Backups</h2>
-
-<p>物理备份由一系列的存储数据库内容的 raw 格式的文件组成，为了保证一致性，必须关机来拷贝物理文件，但是 Percona 公司的 Xtrabackup 工具完美的解决了关机备份的不可行方案，从而实现热备。</p>
-
-<h3 id="xtrabackup">Xtrabackup</h3>
-
-<p>Xtrabackup 有两个主要的工具，xtrabackup，innobackup：
-- xtrabackup 只能备份 InnoDB 和 XtraDB 两种数据表
-- innobackupex 封装了 xtrabackup，同时可以备份 MyISAM 数据表</p>
-
-<pre><code>for example:
-  第一步：
-  innobackupex --user=bkpuser  --password=bkppassword /data/backups
-  第二步：
-  cd /data/backups
-  innobackupex --apply-log ./
-recover:
-  将备份拷贝到需要的目录即可使用。
-</code></pre>
-
-<p>备份的原理：
-1. Xtrabackup ：
-   - REDO 拷贝线程， 拷贝 REDO Log
-   - ibd 拷贝线程 拷贝 InnoDB 物理文件
-2. 完成后，执行 FTWRL 添加全局锁
-3. 拷贝 frm，MYD,MYI etc.
-4. 停止拷贝 REDO ,UNLOCK tables
-5. 等待 xtrabackup 结束，备份结束</p>
-
-<h2 id="mysqldump-pk-mydumper">mysqldump PK mydumper</h2>
+<h4 id="注意:8480fb8dece3f835b0e0e52af9ea4e0a">注意：</h4>
 
 <ul>
-<li>mysqldump 为 MySQL 原生工具，不需要额外安装，对于导出不是特别大的DB，仍然是非常棒的工具，但对于容量大，但又必须逻辑导出的场景就不是特别合适，需要的时间特别长，不支持多线程导入导出。</li>
-<li>mydumper 需要额外安装才能使用，支持多线程备份导入，速度快，支持后台模式导出</li>
+<li>备份的 XML 没有美化成标准的 XML 格式，所以需要去网站上搜索进行 XML 格式美化再保存替换。</li>
+<li>博文的内容被 <code>&lt;![CDATA[</code> <code>]]</code> 包含，如果不指定获取所有内容参数，则会被解析忽略。</li>
+<li>生成 MD 文档 front matter 为 TOML 格式。</li>
 </ul>
 
-<h2 id="logical-pk-physical-backup">Logical PK Physical Backup</h2>
+<p>下面看姐的代码：</p>
+
+<pre><code># -*- coding: utf-8 -*-
+
+import os
+from xml.dom.minidom import parse
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+BACKUP_FILE = 'CNBlogs_BlogBackup_131_201602_201702_2.xml'
+DOMTree = parse(BACKUP_FILE)
+root = DOMTree.documentElement
+blog_title = root.getElementsByTagName('title')[0].childNodes[0].data
+if not os.path.isdir(blog_title):
+    os.mkdir(blog_title)
+
+blogs = root.getElementsByTagName('item')
+
+tag = ['算法','C++', 'git', 'GPU', '驾驶', 'DL', 'TORCS', '服务器' ,'codility' ,'编译器' ,'python' ,'机器','强化','配置','ubuntu']
+
+
+for blog in blogs:
+    try:
+        title = blog.getElementsByTagName('title')[0].childNodes[0].data
+        origin_link = blog.getElementsByTagName('link')[0].childNodes[0].data
+        date = blog.getElementsByTagName('pubDate')[0].childNodes[0].data
+        # content = blog.getElementsByTagName('description')[0].childNodes[0].data
+        content = blog.getElementsByTagName('description')[0].firstChild.wholeText
+        #categories
+        for test in tag:
+            if title.find(test) != -1:
+                categories = test
+                break
+            else:
+                categories = 'Life'
+        with open(blog_title + os.sep + title + '.md', 'w') as f:
+            f.write('+++ \n')
+            f.write('title = &quot;%s&quot; \n' % title)
+            f.write('date = &quot;%s&quot; \n' % date)
+            f.write('categories = [&quot;%s&quot;] \n' % categories)
+            f.write('+++ \n')
+            f.write(content)
+            f.write('\n\n')
+            f.close()
+    except Exception, e:
+        print e
+</code></pre>
+
+<p>执行该脚本，会生成所有的博文。拷贝到 Hugo 的content/post/ 目录，在本地预览效果吧，如果没有问题就 <code>Push</code> 到 <code>Github</code>。</p>
+
+<h3 id="结束语:8480fb8dece3f835b0e0e52af9ea4e0a">结束语</h3>
 
 <ul>
-<li>逻辑备份可以灵活的导出数据（表结构，数据，过滤等）</li>
-<li>逻辑备份与物理备份导出所有数据来看，要慢很多，因为需要读取数据并转换</li>
-<li>逻辑备份的恢复时间长</li>
-<li>物理备份的文件与线上 MySQL 完全一致，包含所有的日志等信息</li>
+<li>使用这样是获取不到数据：<code>content = blog.getElementsByTagName('description')[0].childNodes[0].data</code></li>
+<li>需要使用 wholeText 来读取<code>&lt;![CDATA[</code> <code>]]</code>里的内容。
+<code>content = blog.getElementsByTagName('description')[0].firstChild.wholeText</code></li>
 </ul>
 
 </div>
@@ -303,15 +302,11 @@ recover:
   
 
     
-    <a class="prev" href="https://wwcreator.github.io/2017/02/14/hello-world/" title="Hello World">
+    <a class="prev" href="https://wwcreator.github.io/2017/02/22/hugo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Hugo 搭建博客注意事项">
       Previous
     </a>
     
 
-    
-    <a class="next" href="https://wwcreator.github.io/2017/02/14/%E4%BD%BF%E7%94%A8-hugo--github-page-%E6%90%AD%E5%BB%BA-blog/" title="使用 Hugo &#43; GitHub Page 搭建 Blog">
-      Next
-    </a>
     
 
   
