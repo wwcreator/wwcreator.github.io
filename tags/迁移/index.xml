@@ -24,13 +24,13 @@
 
 &lt;p&gt;来，我教你。&lt;/p&gt;
 
-&lt;h2 id=&#34;备份博客园数据&#34;&gt;备份博客园数据&lt;/h2&gt;
+&lt;h2 id=&#34;备份博客园数据:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;备份博客园数据&lt;/h2&gt;
 
 &lt;p&gt;备份这件小事，应该难不倒你，但是博客园有限制，工作日在「08:00-18:00」,不能备份，所以备份需要挑时间的喔。备份生成的是一份 XML 格式的文件，下一步，continue 。&lt;/p&gt;
 
-&lt;h3 id=&#34;解析-xml-文件的内容&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
+&lt;h3 id=&#34;解析-xml-文件的内容:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
 
-&lt;h4 id=&#34;注意&#34;&gt;注意：&lt;/h4&gt;
+&lt;h4 id=&#34;注意:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;注意：&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;备份的 XML 没有美化成标准的 XML 格式，所以需要去网站上搜索进行 XML 格式美化再保存替换。&lt;/li&gt;
@@ -89,7 +89,7 @@ for blog in blogs:
 
 &lt;p&gt;执行该脚本，会生成所有的博文。拷贝到 Hugo 的content/post/ 目录，在本地预览效果吧，如果没有问题就 &lt;code&gt;Push&lt;/code&gt; 到 &lt;code&gt;Github&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;使用这样是获取不到数据：&lt;code&gt;content = blog.getElementsByTagName(&#39;description&#39;)[0].childNodes[0].data&lt;/code&gt;&lt;/li&gt;
