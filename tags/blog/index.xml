@@ -24,13 +24,13 @@
 
 &lt;p&gt;来，我教你。&lt;/p&gt;
 
-&lt;h2 id=&#34;备份博客园数据:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;备份博客园数据&lt;/h2&gt;
+&lt;h2 id=&#34;备份博客园数据&#34;&gt;备份博客园数据&lt;/h2&gt;
 
 &lt;p&gt;备份这件小事，应该难不倒你，但是博客园有限制，工作日在「08:00-18:00」,不能备份，所以备份需要挑时间的喔。备份生成的是一份 XML 格式的文件，下一步，continue 。&lt;/p&gt;
 
-&lt;h3 id=&#34;解析-xml-文件的内容:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
+&lt;h3 id=&#34;解析-xml-文件的内容&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
 
-&lt;h4 id=&#34;注意:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;注意：&lt;/h4&gt;
+&lt;h4 id=&#34;注意&#34;&gt;注意：&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;备份的 XML 没有美化成标准的 XML 格式，所以需要去网站上搜索进行 XML 格式美化再保存替换。&lt;/li&gt;
@@ -89,7 +89,7 @@ for blog in blogs:
 
 &lt;p&gt;执行该脚本，会生成所有的博文。拷贝到 Hugo 的content/post/ 目录，在本地预览效果吧，如果没有问题就 &lt;code&gt;Push&lt;/code&gt; 到 &lt;code&gt;Github&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;使用这样是获取不到数据：&lt;code&gt;content = blog.getElementsByTagName(&#39;description&#39;)[0].childNodes[0].data&lt;/code&gt;&lt;/li&gt;
@@ -107,23 +107,23 @@ for blog in blogs:
       <guid>https://wwcreator.github.io/2017/02/22/hugo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
       <description>
 
-&lt;h2 id=&#34;标题不能使用-号&#34;&gt;标题不能使用 + 号&lt;/h2&gt;
+&lt;h2 id=&#34;标题不能使用-号:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;标题不能使用 + 号&lt;/h2&gt;
 
 &lt;p&gt;在v0.18 mac 版本中，如果 &lt;code&gt;title&lt;/code&gt; 包含 &lt;code&gt;+&lt;/code&gt; ，虽然不报任何错误，但是不会生成具体的静态页面。&lt;/p&gt;
 
-&lt;h2 id=&#34;将-back-to-top-改成-回到顶部&#34;&gt;将 back to top 改成 「回到顶部」&lt;/h2&gt;
+&lt;h2 id=&#34;将-back-to-top-改成-回到顶部:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;将 back to top 改成 「回到顶部」&lt;/h2&gt;
 
 &lt;p&gt;vi &lt;code&gt;themes/hyde-y/data/Strings.yaml&lt;/code&gt;
 将 「back to top」改成 「回到顶部」。&lt;/p&gt;
 
-&lt;h2 id=&#34;google-baidu-完全搜索不到博文&#34;&gt;google，baidu 完全搜索不到博文&lt;/h2&gt;
+&lt;h2 id=&#34;google-baidu-完全搜索不到博文:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;google，baidu 完全搜索不到博文&lt;/h2&gt;
 
 &lt;p&gt;因为google，baidu 还没有收录我们的URL，所以在google 里输入：site:网址URL 如果能搜索出来则说明，google 已经添加我们的网址。不能则需要提交网址到 google。百度同理。
 &lt;a href=&#34;https://www.google.com/webmasters/tools/home&#34;&gt;https://www.google.com/webmasters/tools/home&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;hugo-不支持站内搜索&#34;&gt;Hugo 不支持站内搜索&lt;/h2&gt;
+&lt;h2 id=&#34;hugo-不支持站内搜索:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;Hugo 不支持站内搜索&lt;/h2&gt;
 
-&lt;h2 id=&#34;hugo-还不支持生成目录树&#34;&gt;Hugo 还不支持生成目录树&lt;/h2&gt;
+&lt;h2 id=&#34;hugo-还不支持生成目录树:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;Hugo 还不支持生成目录树&lt;/h2&gt;
 </description>
     </item>
     
@@ -365,11 +365,11 @@ for blog in blogs:
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;而我们主题的样式修改主要更改的文件有：「style.css」、 「layouts」。
-&lt;img src=&#34;../../images/hyde-y-1.PNG&#34; alt=&#34;hyde-y-before&#34; /&gt;
+&lt;img src=&#34;https://wwcreator.github.io/media/hyde-y-1.PNG&#34; alt=&#34;hyde-y-before&#34; /&gt;
 &lt;strong&gt;修改后:&lt;/strong&gt;
-&lt;img src=&#34;../../images/hyde-y-2.PNG&#34; alt=&#34;hyde-y-after&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://wwcreator.github.io/media/hyde-y-2.PNG&#34; alt=&#34;hyde-y-after&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;更改背景色为黑色&#34;&gt;更改背景色为黑色：&lt;/h3&gt;
+&lt;h3 id=&#34;更改背景色为黑色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改背景色为黑色：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;.main_wrapper&amp;gt;.main_header {
     background-color: #2053AB;
@@ -389,7 +389,7 @@ for blog in blogs:
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;更改字体为-御納户-色&#34;&gt;更改字体为「御納户」色&lt;/h3&gt;
+&lt;h3 id=&#34;更改字体为-御納户-色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改字体为「御納户」色&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://nipponcolors.com/#onando&#34;&gt;Nippon Color&lt;/a&gt;&lt;/p&gt;
 
@@ -407,7 +407,7 @@ for blog in blogs:
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;更改hover为黑色&#34;&gt;更改hover为黑色&lt;/h3&gt;
+&lt;h3 id=&#34;更改hover为黑色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改hover为黑色&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;.main_wrapper&amp;gt;.main_content .label:hover,.main_wrapper&amp;gt;.main_content .navigation a:hover,.main_wrapper&amp;gt;.main_content .pagination a:hover,.main_wrapper&amp;gt;.main_content .readlink a:hover,.main_wrapper&amp;gt;.main_content h2 a:hover,.main_wrapper&amp;gt;.main_header a:hover {
     background-color: #2053AB;
@@ -473,7 +473,7 @@ for blog in blogs:
 
 &lt;p&gt;展示效果：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../images/site-pv.png&#34; alt=&#34;site-pv&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wwcreator.github.io/media/site-pv.png&#34; alt=&#34;site-pv&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;添加页面PV&lt;/li&gt;
@@ -490,7 +490,7 @@ for blog in blogs:
 
 &lt;p&gt;展示效果：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../images/page-pv.png&#34; alt=&#34;page-pv&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wwcreator.github.io/media/page-pv.png&#34; alt=&#34;page-pv&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;结束语:17e4215a535b0868fb863432b24a2d26&#34;&gt;结束语&lt;/h3&gt;
 
