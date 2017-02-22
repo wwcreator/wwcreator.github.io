@@ -24,13 +24,13 @@
 
 &lt;p&gt;来，我教你。&lt;/p&gt;
 
-&lt;h2 id=&#34;备份博客园数据&#34;&gt;备份博客园数据&lt;/h2&gt;
+&lt;h2 id=&#34;备份博客园数据:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;备份博客园数据&lt;/h2&gt;
 
 &lt;p&gt;备份这件小事，应该难不倒你，但是博客园有限制，工作日在「08:00-18:00」,不能备份，所以备份需要挑时间的喔。备份生成的是一份 XML 格式的文件，下一步，continue 。&lt;/p&gt;
 
-&lt;h3 id=&#34;解析-xml-文件的内容&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
+&lt;h3 id=&#34;解析-xml-文件的内容:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
 
-&lt;h4 id=&#34;注意&#34;&gt;注意：&lt;/h4&gt;
+&lt;h4 id=&#34;注意:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;注意：&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;备份的 XML 没有美化成标准的 XML 格式，所以需要去网站上搜索进行 XML 格式美化再保存替换。&lt;/li&gt;
@@ -89,7 +89,7 @@ for blog in blogs:
 
 &lt;p&gt;执行该脚本，会生成所有的博文。拷贝到 Hugo 的content/post/ 目录，在本地预览效果吧，如果没有问题就 &lt;code&gt;Push&lt;/code&gt; 到 &lt;code&gt;Github&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;使用这样是获取不到数据：&lt;code&gt;content = blog.getElementsByTagName(&#39;description&#39;)[0].childNodes[0].data&lt;/code&gt;&lt;/li&gt;
@@ -107,23 +107,39 @@ for blog in blogs:
       <guid>https://wwcreator.github.io/2017/02/22/hugo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
       <description>
 
-&lt;h2 id=&#34;标题不能使用-号&#34;&gt;标题不能使用 + 号&lt;/h2&gt;
+&lt;h3 id=&#34;标题不能使用-号&#34;&gt;标题不能使用 + 号&lt;/h3&gt;
 
 &lt;p&gt;在v0.18 mac 版本中，如果 &lt;code&gt;title&lt;/code&gt; 包含 &lt;code&gt;+&lt;/code&gt; ，虽然不报任何错误，但是不会生成具体的静态页面。&lt;/p&gt;
 
-&lt;h2 id=&#34;将-back-to-top-改成-回到顶部&#34;&gt;将 back to top 改成 「回到顶部」&lt;/h2&gt;
+&lt;h3 id=&#34;将-back-to-top-改成-回到顶部&#34;&gt;将 back to top 改成 「回到顶部」&lt;/h3&gt;
 
 &lt;p&gt;vi &lt;code&gt;themes/hyde-y/data/Strings.yaml&lt;/code&gt;
 将 「back to top」改成 「回到顶部」。&lt;/p&gt;
 
-&lt;h2 id=&#34;google-baidu-完全搜索不到博文&#34;&gt;google，baidu 完全搜索不到博文&lt;/h2&gt;
+&lt;h3 id=&#34;hugo-怎么插入本地-image&#34;&gt;hugo 怎么插入本地 image&lt;/h3&gt;
+
+&lt;p&gt;之前一直不知道怎么插入image，不知道 hugo 是怎么引用的，后续了解到，在site 的目录下的 static 下就是存储的静态文件，我们创建 media 目录存放图片等媒体文件，引用的话，直接「/media/xxx.png」 。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意：&lt;/em&gt;&lt;/strong&gt; 不要使用 xxx.PNG 这样的大写后缀，生成的静态页面为小写后缀，然后出现找不到该 Image。&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo-content-顶部添加-preview-next&#34;&gt;hugo content 顶部添加 preview、next&lt;/h3&gt;
+
+&lt;p&gt;vi &lt;code&gt;themes/hyde-y/layouts/post/single.hat.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在&lt;code&gt;&amp;lt;/header&amp;gt;&lt;/code&gt;前添加：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;br/&amp;gt;
+{{ partial &amp;quot;bloc/content/navigation&amp;quot; . }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;google-baidu-完全搜索不到博文&#34;&gt;google，baidu 完全搜索不到博文&lt;/h3&gt;
 
 &lt;p&gt;因为google，baidu 还没有收录我们的URL，所以在google 里输入：site:网址URL 如果能搜索出来则说明，google 已经添加我们的网址。不能则需要提交网址到 google。百度同理。
 &lt;a href=&#34;https://www.google.com/webmasters/tools/home&#34;&gt;https://www.google.com/webmasters/tools/home&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;hugo-不支持站内搜索&#34;&gt;Hugo 不支持站内搜索&lt;/h2&gt;
+&lt;h3 id=&#34;hugo-不支持站内搜索&#34;&gt;Hugo 不支持站内搜索&lt;/h3&gt;
 
-&lt;h2 id=&#34;hugo-还不支持生成目录树&#34;&gt;Hugo 还不支持生成目录树&lt;/h2&gt;
+&lt;h3 id=&#34;hugo-还不支持生成目录树&#34;&gt;Hugo 还不支持生成目录树&lt;/h3&gt;
 </description>
     </item>
     
@@ -437,11 +453,11 @@ for blog in blogs:
 
 &lt;p&gt;作为一个 Blog 的维护者，当然希望了解站点的统计信息，PV,UV，每个页面的阅读量等，但是 Hugo 主题相对于 Jkyll 少很多，插件也不及等。怎么统计呢？&lt;/p&gt;
 
-&lt;h3 id=&#34;busuanzi-页面计数器&#34;&gt;busuanzi 页面计数器&lt;/h3&gt;
+&lt;h3 id=&#34;busuanzi-页面计数器:17e4215a535b0868fb863432b24a2d26&#34;&gt;busuanzi 页面计数器&lt;/h3&gt;
 
 &lt;p&gt;在阅读一些 Blog 后，发现页面有展示统计信息的很少，Google 一番，发现一个非常简单方便的工具 &lt;a href=&#34;http://ibruce.info/2015/04/04/busuanzi/&#34;&gt;不蒜子&lt;/a&gt; .&lt;/p&gt;
 
-&lt;h3 id=&#34;针对-hyde-y-主题添加页面计数器&#34;&gt;针对 hyde-y 主题添加页面计数器&lt;/h3&gt;
+&lt;h3 id=&#34;针对-hyde-y-主题添加页面计数器:17e4215a535b0868fb863432b24a2d26&#34;&gt;针对 hyde-y 主题添加页面计数器&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;添加 header 信息&lt;/li&gt;
@@ -492,7 +508,7 @@ for blog in blogs:
 
 &lt;p&gt;&lt;img src=&#34;https://wwcreator.github.io/media/page-pv.png&#34; alt=&#34;page-pv&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语:17e4215a535b0868fb863432b24a2d26&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;p&gt;根据自己的审美，功能来定制主题，首先需要对主题的结构，调用等信息清楚，然后再添加自己的改动。对了，如果大家有 Hugo 的站内搜索功能实现的，务必留言哈。&lt;/p&gt;
 </description>
@@ -536,11 +552,11 @@ for blog in blogs:
       <guid>https://wwcreator.github.io/2017/02/14/%E4%BD%BF%E7%94%A8-hugo--github-page-%E6%90%AD%E5%BB%BA-blog/</guid>
       <description>
 
-&lt;h2 id=&#34;我想搭建一个自己的blog:8a6bcd0efa30570889e863020952e1cd&#34;&gt;我想搭建一个自己的Blog&lt;/h2&gt;
+&lt;h2 id=&#34;我想搭建一个自己的blog&#34;&gt;我想搭建一个自己的Blog&lt;/h2&gt;
 
 &lt;p&gt;许久以前，一直想搭一个自己的博客，很不想用第三方的平台，诸多的限制，样式不美观等等，无奈自己没有好好研究怎么使用工具来快速生成，听的最多的是 Jkyll ，Haxo，一看Install Document，望而却步，直到看到 Hugo 工具，简单灵活，我用了两天的时间来研究并部署成功了，分享给有需要的人。&lt;/p&gt;
 
-&lt;h2 id=&#34;step-1-install-hugo-on-ubuntu-16-0-4:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 1. Install Hugo on Ubuntu-16.0.4&lt;/h2&gt;
+&lt;h2 id=&#34;step-1-install-hugo-on-ubuntu-16-0-4&#34;&gt;Step 1. Install Hugo on Ubuntu-16.0.4&lt;/h2&gt;
 
 &lt;p&gt;软件的安装，最方便的非 apt-get 莫属。&lt;/p&gt;
 
@@ -549,7 +565,7 @@ for blog in blogs:
   https://gohugo.io/overview/installing/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;step-2-hugo-创建-site:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 2. Hugo 创建 Site&lt;/h2&gt;
+&lt;h2 id=&#34;step-2-hugo-创建-site&#34;&gt;Step 2. Hugo 创建 Site&lt;/h2&gt;
 
 &lt;p&gt;安装完成后，开始创建自己的 Site。&lt;/p&gt;
 
@@ -583,7 +599,7 @@ tree -a
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;step-3-add-content:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 3. Add content&lt;/h2&gt;
+&lt;h2 id=&#34;step-3-add-content&#34;&gt;Step 3. Add content&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;hugo new post/first.md
 tree -a content
@@ -610,7 +626,7 @@ title = &amp;quot;first&amp;quot;
 
 &lt;p&gt;保存退出，第一个文档完成。&lt;/p&gt;
 
-&lt;h2 id=&#34;step-4-启动-hugo-瞧瞧:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 4. 启动 hugo 瞧瞧&lt;/h2&gt;
+&lt;h2 id=&#34;step-4-启动-hugo-瞧瞧&#34;&gt;Step 4. 启动 hugo 瞧瞧&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;hugo server --baseURL=http://192.168.x.xx:80 \
               --port=80 \
@@ -634,7 +650,7 @@ Press Ctrl+C to stop
 
 &lt;p&gt;访问 &lt;a href=&#34;http://192.168.x.xx:80&#34;&gt;http://192.168.x.xx:80&lt;/a&gt; 然而什么都没有显示，没有我想看到的&lt;code&gt;Hello world&lt;/code&gt;，因为我们还需要安装 &lt;code&gt;theme&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h2 id=&#34;step-5-install-theme:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 5. Install theme&lt;/h2&gt;
+&lt;h2 id=&#34;step-5-install-theme&#34;&gt;Step 5. Install theme&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;cd themes
 git clone https://GitHub.com/enten/hyde-y
@@ -654,7 +670,7 @@ git clone https://GitHub.com/enten/hyde-y
 
 &lt;p&gt;hugo blog 我们已经准备完成，开始创建 GitHub Page。&lt;/p&gt;
 
-&lt;h2 id=&#34;step-6-使用-github-page:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 6. 使用 GitHub Page&lt;/h2&gt;
+&lt;h2 id=&#34;step-6-使用-github-page&#34;&gt;Step 6. 使用 GitHub Page&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;GitHub Pages is a static site hosting service.&lt;/p&gt;
@@ -664,7 +680,7 @@ git clone https://GitHub.com/enten/hyde-y
 
 &lt;p&gt;但是现在repository没有任何code，所以接下来通过 hugo 生成静态页面并上传到 GitHub 上。&lt;/p&gt;
 
-&lt;h2 id=&#34;step-7-本地生成静态页面:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 7. 本地生成静态页面&lt;/h2&gt;
+&lt;h2 id=&#34;step-7-本地生成静态页面&#34;&gt;Step 7. 本地生成静态页面&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;# 注意与本地的区别
 hugo  --baseURL=http://username.github.io \
@@ -685,7 +701,7 @@ tree -a
 
 &lt;p&gt;生成的静态页面存储在 public 目录，马上要接近成功了。&lt;/p&gt;
 
-&lt;h2 id=&#34;step-8-本地服务配置-github-信息:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 8. 本地服务配置 GitHub 信息&lt;/h2&gt;
+&lt;h2 id=&#34;step-8-本地服务配置-github-信息&#34;&gt;Step 8. 本地服务配置 GitHub 信息&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;ssh-keygen
 cat .ssh/id_rsa.pub
@@ -695,7 +711,7 @@ git config --global user.name &amp;quot;你的名字&amp;quot;
 git config --global user.email &amp;quot;your_email@youremail.com&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;step-9-上传到-github:8a6bcd0efa30570889e863020952e1cd&#34;&gt;Step 9. 上传到 GitHub&lt;/h2&gt;
+&lt;h2 id=&#34;step-9-上传到-github&#34;&gt;Step 9. 上传到 GitHub&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;cd public
 git init   # init
@@ -730,15 +746,15 @@ To git@GitHub.com:wwcreator/wwcreator.github.io.git
       <guid>https://wwcreator.github.io/2017/02/14/mysql-%E5%B8%B8%E7%94%A8%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B/</guid>
       <description>
 
-&lt;h1 id=&#34;mysql-常用的备份方式有哪些&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
+&lt;h1 id=&#34;mysql-常用的备份方式有哪些:594245a56ae1434f284c298be360de6a&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
 
 &lt;p&gt;不管是MySQL, Oracle，MariaDB 等关系型数据库，还是 MongoDB，Redis 等 NoSQL 数据库，都有众所周知的&lt;code&gt;Logical Backup&lt;/code&gt; &amp;amp;  &lt;code&gt;Physical Backup&lt;/code&gt; 。&lt;/p&gt;
 
-&lt;h2 id=&#34;mysql-logical-backups&#34;&gt;MySQL Logical Backups&lt;/h2&gt;
+&lt;h2 id=&#34;mysql-logical-backups:594245a56ae1434f284c298be360de6a&#34;&gt;MySQL Logical Backups&lt;/h2&gt;
 
 &lt;p&gt;逻辑备份是按照数据库的逻辑结构（CREATE DATABASE, CREATE TABLE 语句）和内容（INSERT,分隔文本）的方式来存储。非常常用的是当属 MySQL 自带的 &lt;code&gt;mysqldump&lt;/code&gt;和 &lt;code&gt;mydumper&lt;/code&gt; 工具。&lt;/p&gt;
 
-&lt;h3 id=&#34;mysqldump&#34;&gt;mysqldump&lt;/h3&gt;
+&lt;h3 id=&#34;mysqldump:594245a56ae1434f284c298be360de6a&#34;&gt;mysqldump&lt;/h3&gt;
 
 &lt;p&gt;mysqldump 支持导出部分DB，部分Table， 而且还支持 &amp;ndash;where 行条件过滤（不支持列过滤），InnoDB引擎不锁表导出等。还支持获取导出的 Binlog position，很方便的进行PIT（point in time）recover。&lt;/p&gt;
 
@@ -752,7 +768,7 @@ recover：
 &lt;p&gt;PS: MySQL 5.7.11 版本引入 mysqlpump 工具，支持多线程（粒度到表级别），压缩导入导出。
 mysqlpump的并行导出功能的架构为：队列+线程，允许有多个队列，每个队列下有多个线程，而一个队列可以绑定1个或者多个数据库。但是，对于每张表的导出只能是单个线程的。&lt;/p&gt;
 
-&lt;h3 id=&#34;mydumper&#34;&gt;mydumper&lt;/h3&gt;
+&lt;h3 id=&#34;mydumper:594245a56ae1434f284c298be360de6a&#34;&gt;mydumper&lt;/h3&gt;
 
 &lt;p&gt;mydumper（&amp;amp;myloader）是用于对MySQL数据库进行多线程备份和恢复的开源 (GNU GPLv3)工具。开发人员主要来自MySQL、Facebook和SkySQL公司，目前由Percona公司开发和维护。
 mydumper 支持多线程备份恢复，粒度到记录级别，对于导出大容量的数据，效率非常高。&lt;/p&gt;
@@ -767,11 +783,11 @@ recover:
   - 主线程将各个库表，分成若干个任务，放入任务队列
   - 执行线程从任务队列读取任务，并执行。&lt;/p&gt;
 
-&lt;h2 id=&#34;mysql-physical-backups&#34;&gt;MySQL Physical Backups&lt;/h2&gt;
+&lt;h2 id=&#34;mysql-physical-backups:594245a56ae1434f284c298be360de6a&#34;&gt;MySQL Physical Backups&lt;/h2&gt;
 
 &lt;p&gt;物理备份由一系列的存储数据库内容的 raw 格式的文件组成，为了保证一致性，必须关机来拷贝物理文件，但是 Percona 公司的 Xtrabackup 工具完美的解决了关机备份的不可行方案，从而实现热备。&lt;/p&gt;
 
-&lt;h3 id=&#34;xtrabackup&#34;&gt;Xtrabackup&lt;/h3&gt;
+&lt;h3 id=&#34;xtrabackup:594245a56ae1434f284c298be360de6a&#34;&gt;Xtrabackup&lt;/h3&gt;
 
 &lt;p&gt;Xtrabackup 有两个主要的工具，xtrabackup，innobackup：
 - xtrabackup 只能备份 InnoDB 和 XtraDB 两种数据表
@@ -796,14 +812,14 @@ recover:
 4. 停止拷贝 REDO ,UNLOCK tables
 5. 等待 xtrabackup 结束，备份结束&lt;/p&gt;
 
-&lt;h2 id=&#34;mysqldump-pk-mydumper&#34;&gt;mysqldump PK mydumper&lt;/h2&gt;
+&lt;h2 id=&#34;mysqldump-pk-mydumper:594245a56ae1434f284c298be360de6a&#34;&gt;mysqldump PK mydumper&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;mysqldump 为 MySQL 原生工具，不需要额外安装，对于导出不是特别大的DB，仍然是非常棒的工具，但对于容量大，但又必须逻辑导出的场景就不是特别合适，需要的时间特别长，不支持多线程导入导出。&lt;/li&gt;
 &lt;li&gt;mydumper 需要额外安装才能使用，支持多线程备份导入，速度快，支持后台模式导出&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;logical-pk-physical-backup&#34;&gt;Logical PK Physical Backup&lt;/h2&gt;
+&lt;h2 id=&#34;logical-pk-physical-backup:594245a56ae1434f284c298be360de6a&#34;&gt;Logical PK Physical Backup&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;逻辑备份可以灵活的导出数据（表结构，数据，过滤等）&lt;/li&gt;
