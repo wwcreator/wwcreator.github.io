@@ -107,22 +107,22 @@ for blog in blogs:
       <guid>https://wwcreator.github.io/2017/02/22/hugo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
       <description>
 
-&lt;h3 id=&#34;标题不能使用-号&#34;&gt;标题不能使用 + 号&lt;/h3&gt;
+&lt;h3 id=&#34;标题不能使用-号:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;标题不能使用 + 号&lt;/h3&gt;
 
 &lt;p&gt;在v0.18 mac 版本中，如果 &lt;code&gt;title&lt;/code&gt; 包含 &lt;code&gt;+&lt;/code&gt; ，虽然不报任何错误，但是不会生成具体的静态页面。&lt;/p&gt;
 
-&lt;h3 id=&#34;将-back-to-top-改成-回到顶部&#34;&gt;将 back to top 改成 「回到顶部」&lt;/h3&gt;
+&lt;h3 id=&#34;将-back-to-top-改成-回到顶部:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;将 back to top 改成 「回到顶部」&lt;/h3&gt;
 
 &lt;p&gt;vi &lt;code&gt;themes/hyde-y/data/Strings.yaml&lt;/code&gt;
 将 「back to top」改成 「回到顶部」。&lt;/p&gt;
 
-&lt;h3 id=&#34;hugo-怎么插入本地-image&#34;&gt;hugo 怎么插入本地 image&lt;/h3&gt;
+&lt;h3 id=&#34;hugo-怎么插入本地-image:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;hugo 怎么插入本地 image&lt;/h3&gt;
 
 &lt;p&gt;之前一直不知道怎么插入image，不知道 hugo 是怎么引用的，后续了解到，在site 的目录下的 static 下就是存储的静态文件，我们创建 media 目录存放图片等媒体文件，引用的话，直接「/media/xxx.png」 。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;注意：&lt;/em&gt;&lt;/strong&gt; 不要使用 xxx.PNG 这样的大写后缀，生成的静态页面为小写后缀，然后出现找不到该 Image。&lt;/p&gt;
 
-&lt;h3 id=&#34;hugo-content-顶部添加-preview-next&#34;&gt;hugo content 顶部添加 preview、next&lt;/h3&gt;
+&lt;h3 id=&#34;hugo-content-顶部添加-preview-next:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;hugo content 顶部添加 preview、next&lt;/h3&gt;
 
 &lt;p&gt;vi &lt;code&gt;themes/hyde-y/layouts/post/single.hat.html&lt;/code&gt;&lt;/p&gt;
 
@@ -132,14 +132,14 @@ for blog in blogs:
 {{ partial &amp;quot;bloc/content/navigation&amp;quot; . }}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;google-baidu-完全搜索不到博文&#34;&gt;google，baidu 完全搜索不到博文&lt;/h3&gt;
+&lt;h3 id=&#34;google-baidu-完全搜索不到博文:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;google，baidu 完全搜索不到博文&lt;/h3&gt;
 
 &lt;p&gt;因为google，baidu 还没有收录我们的URL，所以在google 里输入：site:网址URL 如果能搜索出来则说明，google 已经添加我们的网址。不能则需要提交网址到 google。百度同理。
 &lt;a href=&#34;https://www.google.com/webmasters/tools/home&#34;&gt;https://www.google.com/webmasters/tools/home&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;hugo-不支持站内搜索&#34;&gt;Hugo 不支持站内搜索&lt;/h3&gt;
+&lt;h3 id=&#34;hugo-不支持站内搜索:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;Hugo 不支持站内搜索&lt;/h3&gt;
 
-&lt;h3 id=&#34;hugo-还不支持生成目录树&#34;&gt;Hugo 还不支持生成目录树&lt;/h3&gt;
+&lt;h3 id=&#34;hugo-还不支持生成目录树:e3d4e8203f1f66ba4b5837ed21246063&#34;&gt;Hugo 还不支持生成目录树&lt;/h3&gt;
 </description>
     </item>
     
@@ -453,11 +453,11 @@ for blog in blogs:
 
 &lt;p&gt;作为一个 Blog 的维护者，当然希望了解站点的统计信息，PV,UV，每个页面的阅读量等，但是 Hugo 主题相对于 Jkyll 少很多，插件也不及等。怎么统计呢？&lt;/p&gt;
 
-&lt;h3 id=&#34;busuanzi-页面计数器&#34;&gt;busuanzi 页面计数器&lt;/h3&gt;
+&lt;h3 id=&#34;busuanzi-页面计数器:17e4215a535b0868fb863432b24a2d26&#34;&gt;busuanzi 页面计数器&lt;/h3&gt;
 
 &lt;p&gt;在阅读一些 Blog 后，发现页面有展示统计信息的很少，Google 一番，发现一个非常简单方便的工具 &lt;a href=&#34;http://ibruce.info/2015/04/04/busuanzi/&#34;&gt;不蒜子&lt;/a&gt; .&lt;/p&gt;
 
-&lt;h3 id=&#34;针对-hyde-y-主题添加页面计数器&#34;&gt;针对 hyde-y 主题添加页面计数器&lt;/h3&gt;
+&lt;h3 id=&#34;针对-hyde-y-主题添加页面计数器:17e4215a535b0868fb863432b24a2d26&#34;&gt;针对 hyde-y 主题添加页面计数器&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;添加 header 信息&lt;/li&gt;
@@ -508,7 +508,7 @@ for blog in blogs:
 
 &lt;p&gt;&lt;img src=&#34;https://wwcreator.github.io/media/page-pv.png&#34; alt=&#34;page-pv&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语:17e4215a535b0868fb863432b24a2d26&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;p&gt;根据自己的审美，功能来定制主题，首先需要对主题的结构，调用等信息清楚，然后再添加自己的改动。对了，如果大家有 Hugo 的站内搜索功能实现的，务必留言哈。&lt;/p&gt;
 </description>
@@ -919,7 +919,7 @@ recover:
       <guid>https://wwcreator.github.io/2017/02/14/hello-world/</guid>
       <description>
 
-&lt;h3 id=&#34;hello-world:bef80f8e73e4e4bfdcc92e5136092d00&#34;&gt;Hello World&lt;/h3&gt;
+&lt;h3 id=&#34;hello-world&#34;&gt;Hello World&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;Hello World
 &lt;/code&gt;&lt;/pre&gt;
@@ -934,7 +934,7 @@ recover:
       <guid>https://wwcreator.github.io/about/</guid>
       <description>
 
-&lt;h3 id=&#34;this-is-a-wwcreator-blog:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;
+&lt;h3 id=&#34;this-is-a-wwcreator-blog&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;En-Name: Kelly
 E-mail: yuwen_qing@126.com
