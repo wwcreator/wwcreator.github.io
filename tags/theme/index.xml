@@ -20,23 +20,23 @@
       <guid>https://wwcreator.github.io/2017/02/24/hugo_%E6%82%AC%E6%B5%AE%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8/</guid>
       <description>
 
-&lt;h3 id=&#34;step-1-下载喜欢的-回到顶部-素材:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;Step 1. 下载喜欢的「回到顶部」素材&lt;/h3&gt;
+&lt;h3 id=&#34;step-1-下载喜欢的-回到顶部-素材&#34;&gt;Step 1. 下载喜欢的「回到顶部」素材&lt;/h3&gt;
 
 &lt;p&gt;在网上搜索自己喜欢的素材图片，我的图片是&lt;a href=&#34;https://tmhm.github.io&#34;&gt;@well&lt;/a&gt; 制作的。&lt;img src=&#34;https://wwcreator.github.io/media/top21.png&#34; alt=&#34;back_to_top&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;step-2-针对-hyde-y-主题更改-回到顶部:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;Step 2. 针对 hyde-y 主题更改「回到顶部」&lt;/h3&gt;
+&lt;h3 id=&#34;step-2-针对-hyde-y-主题更改-回到顶部&#34;&gt;Step 2. 针对 hyde-y 主题更改「回到顶部」&lt;/h3&gt;
 
-&lt;h4 id=&#34;创建-jquery-min-js-文件:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;创建 jquery.min.js 文件&lt;/h4&gt;
+&lt;h4 id=&#34;创建-jquery-min-js-文件&#34;&gt;创建 jquery.min.js 文件&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;[下载](https://wwcreator.github.io/js/jquery.min.js)
 将文件放置在 your_site_name/theme/hyde-y/static/js/ 目录。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;放置素材:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;放置素材&lt;/h4&gt;
+&lt;h4 id=&#34;放置素材&#34;&gt;放置素材&lt;/h4&gt;
 
 &lt;p&gt;将素材图片放置在 your_site_name/theme/hyde-y/static/ 目录。&lt;/p&gt;
 
-&lt;h4 id=&#34;引入样式:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;引入样式&lt;/h4&gt;
+&lt;h4 id=&#34;引入样式&#34;&gt;引入样式&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;vi your_site_name/theme/hyde-y/layouts/partials/modules/site/link/top.html&lt;/code&gt; 将下面的内容替换到该文件。&lt;/p&gt;
 
