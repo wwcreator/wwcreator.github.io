@@ -250,11 +250,11 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;而我们主题的样式修改主要更改的文件有：「style.css」、 「layouts」。
-&lt;img src=&#34;https://wwcreator.github.io/media/hyde-y-1.PNG&#34; alt=&#34;hyde-y-before&#34; /&gt;
+&lt;img src=&#34;https://wwcreator.github.io/media/hyde-y-1.png&#34; alt=&#34;hyde-y-before&#34; /&gt;
 &lt;strong&gt;修改后:&lt;/strong&gt;
-&lt;img src=&#34;https://wwcreator.github.io/media/hyde-y-2.PNG&#34; alt=&#34;hyde-y-after&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://wwcreator.github.io/media/hyde-y-2.png&#34; alt=&#34;hyde-y-after&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;更改背景色为黑色&#34;&gt;更改背景色为黑色：&lt;/h3&gt;
+&lt;h3 id=&#34;更改背景色为黑色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改背景色为黑色：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;.main_wrapper&amp;gt;.main_header {
     background-color: #2053AB;
@@ -274,7 +274,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;更改字体为-御納户-色&#34;&gt;更改字体为「御納户」色&lt;/h3&gt;
+&lt;h3 id=&#34;更改字体为-御納户-色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改字体为「御納户」色&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://nipponcolors.com/#onando&#34;&gt;Nippon Color&lt;/a&gt;&lt;/p&gt;
 
@@ -292,7 +292,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;更改hover为黑色&#34;&gt;更改hover为黑色&lt;/h3&gt;
+&lt;h3 id=&#34;更改hover为黑色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改hover为黑色&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;.main_wrapper&amp;gt;.main_content .label:hover,.main_wrapper&amp;gt;.main_content .navigation a:hover,.main_wrapper&amp;gt;.main_content .pagination a:hover,.main_wrapper&amp;gt;.main_content .readlink a:hover,.main_wrapper&amp;gt;.main_content h2 a:hover,.main_wrapper&amp;gt;.main_header a:hover {
     background-color: #2053AB;
@@ -322,11 +322,11 @@
 
 &lt;p&gt;作为一个 Blog 的维护者，当然希望了解站点的统计信息，PV,UV，每个页面的阅读量等，但是 Hugo 主题相对于 Jkyll 少很多，插件也不及等。怎么统计呢？&lt;/p&gt;
 
-&lt;h3 id=&#34;busuanzi-页面计数器:17e4215a535b0868fb863432b24a2d26&#34;&gt;busuanzi 页面计数器&lt;/h3&gt;
+&lt;h3 id=&#34;busuanzi-页面计数器&#34;&gt;busuanzi 页面计数器&lt;/h3&gt;
 
 &lt;p&gt;在阅读一些 Blog 后，发现页面有展示统计信息的很少，Google 一番，发现一个非常简单方便的工具 &lt;a href=&#34;http://ibruce.info/2015/04/04/busuanzi/&#34;&gt;不蒜子&lt;/a&gt; .&lt;/p&gt;
 
-&lt;h3 id=&#34;针对-hyde-y-主题添加页面计数器:17e4215a535b0868fb863432b24a2d26&#34;&gt;针对 hyde-y 主题添加页面计数器&lt;/h3&gt;
+&lt;h3 id=&#34;针对-hyde-y-主题添加页面计数器&#34;&gt;针对 hyde-y 主题添加页面计数器&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;添加 header 信息&lt;/li&gt;
@@ -377,7 +377,7 @@
 
 &lt;p&gt;&lt;img src=&#34;https://wwcreator.github.io/media/page-pv.png&#34; alt=&#34;page-pv&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语:17e4215a535b0868fb863432b24a2d26&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;p&gt;根据自己的审美，功能来定制主题，首先需要对主题的结构，调用等信息清楚，然后再添加自己的改动。对了，如果大家有 Hugo 的站内搜索功能实现的，务必留言哈。&lt;/p&gt;
 </description>

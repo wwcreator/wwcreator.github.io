@@ -248,22 +248,22 @@
   <div class="container content">
   
 
-<h3 id="标题不能使用-号:e3d4e8203f1f66ba4b5837ed21246063">标题不能使用 + 号</h3>
+<h3 id="标题不能使用-号">标题不能使用 + 号</h3>
 
 <p>在v0.18 mac 版本中，如果 <code>title</code> 包含 <code>+</code> ，虽然不报任何错误，但是不会生成具体的静态页面。</p>
 
-<h3 id="将-back-to-top-改成-回到顶部:e3d4e8203f1f66ba4b5837ed21246063">将 back to top 改成 「回到顶部」</h3>
+<h3 id="将-back-to-top-改成-回到顶部">将 back to top 改成 「回到顶部」</h3>
 
 <p>vi <code>themes/hyde-y/data/Strings.yaml</code>
 将 「back to top」改成 「回到顶部」。</p>
 
-<h3 id="hugo-怎么插入本地-image:e3d4e8203f1f66ba4b5837ed21246063">hugo 怎么插入本地 image</h3>
+<h3 id="hugo-怎么插入本地-image">hugo 怎么插入本地 image</h3>
 
 <p>之前一直不知道怎么插入image，不知道 hugo 是怎么引用的，后续了解到，在site 的目录下的 static 下就是存储的静态文件，我们创建 media 目录存放图片等媒体文件，引用的话，直接「/media/xxx.png」 。</p>
 
 <p><strong><em>注意：</em></strong> 不要使用 xxx.PNG 这样的大写后缀，生成的静态页面为小写后缀，然后出现找不到该 Image。</p>
 
-<h3 id="hugo-content-顶部添加-preview-next:e3d4e8203f1f66ba4b5837ed21246063">hugo content 顶部添加 preview、next</h3>
+<h3 id="hugo-content-顶部添加-preview-next">hugo content 顶部添加 preview、next</h3>
 
 <p>vi <code>themes/hyde-y/layouts/post/single.hat.html</code></p>
 
@@ -273,14 +273,14 @@
 {{ partial &quot;bloc/content/navigation&quot; . }}
 </code></pre>
 
-<h3 id="google-baidu-完全搜索不到博文:e3d4e8203f1f66ba4b5837ed21246063">google，baidu 完全搜索不到博文</h3>
+<h3 id="google-baidu-完全搜索不到博文">google，baidu 完全搜索不到博文</h3>
 
 <p>因为google，baidu 还没有收录我们的URL，所以在google 里输入：site:网址URL 如果能搜索出来则说明，google 已经添加我们的网址。不能则需要提交网址到 google。百度同理。
 <a href="https://www.google.com/webmasters/tools/home">https://www.google.com/webmasters/tools/home</a></p>
 
-<h3 id="hugo-不支持站内搜索:e3d4e8203f1f66ba4b5837ed21246063">Hugo 不支持站内搜索</h3>
+<h3 id="hugo-不支持站内搜索">Hugo 不支持站内搜索</h3>
 
-<h3 id="hugo-还不支持生成目录树:e3d4e8203f1f66ba4b5837ed21246063">Hugo 还不支持生成目录树</h3>
+<h3 id="hugo-还不支持生成目录树">Hugo 还不支持生成目录树</h3>
 
 </div>
 
@@ -353,8 +353,8 @@
         }
 });
 </script>
-<div class="ctrolPanel" id="gotop" style="display:none;width:60px;height:60px;position:fixed;right:25px;top:85%;overflow:hidden;z-index:10000;">
-  <a href="#"><img title="返回顶部" src="/huojian.svg" /></a>
+<div class="ctrolPanel" id="gotop" style="display:none;width:50px;height:50px;position:fixed;right:25px;top:85%;overflow:hidden;z-index:10000;">
+  <a href="#"><img title="返回顶部" src="/top21.png" /></a>
 </div>
 
 
