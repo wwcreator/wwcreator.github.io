@@ -9,8 +9,60 @@
     <managingEditor>yuwen_qing@126.com (wwcreator)</managingEditor>
     <webMaster>yuwen_qing@126.com (wwcreator)</webMaster>
     <copyright>(c) 2017 wwcreator.</copyright>
-    <lastBuildDate>Wed, 22 Feb 2017 13:16:48 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 24 Feb 2017 10:31:48 -0800</lastBuildDate>
     <atom:link href="https://wwcreator.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hugo_悬浮回到顶部</title>
+      <link>https://wwcreator.github.io/2017/02/24/hugo_%E6%82%AC%E6%B5%AE%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8/</link>
+      <pubDate>Fri, 24 Feb 2017 10:31:48 -0800</pubDate>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/02/24/hugo_%E6%82%AC%E6%B5%AE%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8/</guid>
+      <description>
+
+&lt;h3 id=&#34;step-1-下载喜欢的-回到顶部-素材:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;Step 1. 下载喜欢的「回到顶部」素材&lt;/h3&gt;
+
+&lt;p&gt;在网上搜索自己喜欢的素材图片，我的图片是&lt;a href=&#34;https://tmhm.github.io&#34;&gt;@well&lt;/a&gt; 制作的。&lt;img src=&#34;https://wwcreator.github.io/media/top21.png&#34; alt=&#34;back_to_top&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-2-针对-hyde-y-主题更改-回到顶部:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;Step 2. 针对 hyde-y 主题更改「回到顶部」&lt;/h3&gt;
+
+&lt;h4 id=&#34;创建-jquery-min-js-文件:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;创建 jquery.min.js 文件&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;[下载](https://wwcreator.github.io/js/jquery.min.js)
+将文件放置在 your_site_name/theme/hyde-y/static/js/ 目录。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;放置素材:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;放置素材&lt;/h4&gt;
+
+&lt;p&gt;将素材图片放置在 your_site_name/theme/hyde-y/static/ 目录。&lt;/p&gt;
+
+&lt;h4 id=&#34;引入样式:d18922e4a07ddb4e2d0eedde523f9303&#34;&gt;引入样式&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;vi your_site_name/theme/hyde-y/layouts/partials/modules/site/link/top.html&lt;/code&gt; 将下面的内容替换到该文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#引入jquery
+&amp;lt;script src=&amp;quot;/js/jquery.min.js&amp;quot; type=&amp;quot;text/javascript&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+#控制
+&amp;lt;script&amp;gt;
+        $(window).on(&amp;quot;scroll&amp;quot;,function(e){
+        if($(&#39;body&#39;).scrollTop() &amp;gt;= 400  ){
+                $(&#39;#gotop&#39;).show();
+
+
+        }else{
+                $(&#39;#gotop&#39;).hide();
+        }
+});
+&amp;lt;/script&amp;gt;
+&amp;lt;div class=&amp;quot;ctrolPanel&amp;quot; id=&amp;quot;gotop&amp;quot; style=&amp;quot;display:none;width:50px;height:50px;position:fixed;right:25px;top:85%;overflow:hidden;z-index:10000;&amp;quot;&amp;gt;
+  &amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;&amp;lt;img title=&amp;quot;返回顶部&amp;quot; src=&amp;quot;/top21.png&amp;quot; /&amp;gt;&amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完成上述步骤后，就可以使用悬浮「回到顶部」。这个折腾了一阵子，一直没有悬浮的效果，是静止的在页面。后面发现少了 jQuery，引入 jQuery 文件后，就可以通过 jQuery 实现悬浮的效果。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>博客园迁移到Hugo</title>
@@ -24,13 +76,13 @@
 
 &lt;p&gt;来，我教你。&lt;/p&gt;
 
-&lt;h2 id=&#34;备份博客园数据&#34;&gt;备份博客园数据&lt;/h2&gt;
+&lt;h2 id=&#34;备份博客园数据:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;备份博客园数据&lt;/h2&gt;
 
 &lt;p&gt;备份这件小事，应该难不倒你，但是博客园有限制，工作日在「08:00-18:00」,不能备份，所以备份需要挑时间的喔。备份生成的是一份 XML 格式的文件，下一步，continue 。&lt;/p&gt;
 
-&lt;h3 id=&#34;解析-xml-文件的内容&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
+&lt;h3 id=&#34;解析-xml-文件的内容:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
 
-&lt;h4 id=&#34;注意&#34;&gt;注意：&lt;/h4&gt;
+&lt;h4 id=&#34;注意:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;注意：&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;备份的 XML 没有美化成标准的 XML 格式，所以需要去网站上搜索进行 XML 格式美化再保存替换。&lt;/li&gt;
@@ -89,7 +141,7 @@ for blog in blogs:
 
 &lt;p&gt;执行该脚本，会生成所有的博文。拷贝到 Hugo 的content/post/ 目录，在本地预览效果吧，如果没有问题就 &lt;code&gt;Push&lt;/code&gt; 到 &lt;code&gt;Github&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;使用这样是获取不到数据：&lt;code&gt;content = blog.getElementsByTagName(&#39;description&#39;)[0].childNodes[0].data&lt;/code&gt;&lt;/li&gt;
@@ -453,11 +505,11 @@ for blog in blogs:
 
 &lt;p&gt;作为一个 Blog 的维护者，当然希望了解站点的统计信息，PV,UV，每个页面的阅读量等，但是 Hugo 主题相对于 Jkyll 少很多，插件也不及等。怎么统计呢？&lt;/p&gt;
 
-&lt;h3 id=&#34;busuanzi-页面计数器&#34;&gt;busuanzi 页面计数器&lt;/h3&gt;
+&lt;h3 id=&#34;busuanzi-页面计数器:17e4215a535b0868fb863432b24a2d26&#34;&gt;busuanzi 页面计数器&lt;/h3&gt;
 
 &lt;p&gt;在阅读一些 Blog 后，发现页面有展示统计信息的很少，Google 一番，发现一个非常简单方便的工具 &lt;a href=&#34;http://ibruce.info/2015/04/04/busuanzi/&#34;&gt;不蒜子&lt;/a&gt; .&lt;/p&gt;
 
-&lt;h3 id=&#34;针对-hyde-y-主题添加页面计数器&#34;&gt;针对 hyde-y 主题添加页面计数器&lt;/h3&gt;
+&lt;h3 id=&#34;针对-hyde-y-主题添加页面计数器:17e4215a535b0868fb863432b24a2d26&#34;&gt;针对 hyde-y 主题添加页面计数器&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;添加 header 信息&lt;/li&gt;
@@ -508,7 +560,7 @@ for blog in blogs:
 
 &lt;p&gt;&lt;img src=&#34;https://wwcreator.github.io/media/page-pv.png&#34; alt=&#34;page-pv&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语:17e4215a535b0868fb863432b24a2d26&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;p&gt;根据自己的审美，功能来定制主题，首先需要对主题的结构，调用等信息清楚，然后再添加自己的改动。对了，如果大家有 Hugo 的站内搜索功能实现的，务必留言哈。&lt;/p&gt;
 </description>
