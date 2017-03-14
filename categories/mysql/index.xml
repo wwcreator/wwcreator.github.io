@@ -9,8 +9,48 @@
     <managingEditor>yuwen_qing@126.com (wwcreator)</managingEditor>
     <webMaster>yuwen_qing@126.com (wwcreator)</webMaster>
     <copyright>(c) 2017 wwcreator.</copyright>
-    <lastBuildDate>Tue, 14 Feb 2017 21:11:31 -0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Mar 2017 18:09:55 -0700</lastBuildDate>
     <atom:link href="https://wwcreator.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>delete_duplicate_row</title>
+      <link>https://wwcreator.github.io/2017/03/13/delete_duplicate_row/</link>
+      <pubDate>Mon, 13 Mar 2017 18:09:55 -0700</pubDate>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/03/13/delete_duplicate_row/</guid>
+      <description>&lt;p&gt;在很多时候，我们数据库里会出现重复的数据需要去重，而今天遇到很奇怪的问题？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;delete from test
+where name  in (select name from test group by name having count(*) &amp;gt; 1)
+and test_id not in (select min(test_id) from test group by openid having count(*) &amp;gt; 1);
+
+OR：
+
+delete from test 
+where test_id not in (select min(test_id) from test group by name);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是，很不幸，我们得到了下面的错误。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ERROR 1093 (HY000): You can&#39;t specify target table &#39;test&#39; for update in FROM clause
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Why？&lt;/p&gt;
+
+&lt;p&gt;从错误信息来看，你不能在 FROM 定义更新的表test。那怎么办？&lt;/p&gt;
+
+&lt;p&gt;灵机一动，恩恩，那我加一层临时表会怎样？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;delete from test 
+where test_id not in (select id from 
+			(select min(test_id) id from test group by name)
+		     temp);
+Query OK, 17 rows affected (0.02 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;oooh,Amazing, 但是还是不太清楚MySQL解析该SQL 的原理，后续再补充，此文作为操作记录。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>MySQL 常用备份工具简介</title>
