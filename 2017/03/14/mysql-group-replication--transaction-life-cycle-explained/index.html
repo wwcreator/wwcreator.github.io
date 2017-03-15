@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>MySQL Group Replication – Transaction life cycle explained  &middot; 户枢不蠹</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="wwcreator blog" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="MySQL Group Replication – Transaction life cycle explained  &middot; 户枢不蠹 ">
+<meta property="og:site_name" content="户枢不蠹"/>
+<meta property="og:url" content="https://wwcreator.github.io/2017/03/14/mysql-group-replication--transaction-life-cycle-explained/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="wwcreator blog"/>
+<meta property="og:article:published_time" content="2017-03-14T18:22:41-07:00" />
+<meta property="og:article:modified_time" content="2017-03-14T18:22:41-07:00" />
+
+  
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="MySQL Group Replication – Transaction life cycle explained" />
+<meta name="twitter:description" content="wwcreator blog" />
+<meta name="twitter:url" content="https://wwcreator.github.io/2017/03/14/mysql-group-replication--transaction-life-cycle-explained/" />
+<meta name="twitter:domain" content="https://wwcreator.github.io/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "MySQL Group Replication – Transaction life cycle explained",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2017-03-14",
+    "description": "wwcreator blog",
+    "wordCount":  155 
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://wwcreator.github.io/2017/03/14/mysql-group-replication--transaction-life-cycle-explained/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://wwcreator.github.io/we3.png">
+<link href="https://wwcreator.github.io/we3.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://wwcreator.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://wwcreator.github.io/css/style.css">
+<link rel="stylesheet" href="https://wwcreator.github.io/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-92175324-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+	<script>
+	(function(){
+    	var bp = document.createElement('script');
+    	var curProtocol = window.location.protocol.split(':')[0];
+    	if (curProtocol === 'https'){
+   		bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  	}
+  	else{
+  		bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  	}
+    	var s = document.getElementsByTagName("script")[0];
+    	s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://wwcreator.github.io/">
+  流水不腐
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  just be supreme
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://wwcreator.github.io/">home</a>
+
+
+  
+<a href="https://wwcreator.github.io/about">About</a>
+
+<a href="https://wwcreator.github.io/categories" title="Show list of categories">Categories</a>
+
+<a href="https://wwcreator.github.io/post" title="Show list of posts">Posts</a>
+
+<a href="https://wwcreator.github.io/tags" title="show list of tags">Tags</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:yuwen_qing@126.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/wwcreator">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>MySQL Group Replication – Transaction life cycle explained
+</h1>
+
+  <div class="metas">
+<time datetime="2017-03-14">14 Mar, 2017</time>
+
+
+
+  
+  &middot; Read in about 1 min
+  &middot; (155 Words)
+  <br>
+  
+
+
+&nbsp;&nbsp;
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+</div>
+
+  <br/>
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://wwcreator.github.io/2017/03/14/how_google_works/" title="How_Google_Works">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  <p>MySQL Group Replication – Transaction life cycle explained</p>
+
+<p>MySQL Group Replication - 事务生命周期分析</p>
+
+<p>MySQL multi master 插件来了，MGR 可以实现在任何 MySQL 成员进行同步更新，冲突处理，成员自动管理和成员故障检测。</p>
+
+<p>为了更好的理解 MGR 的工作原理，我们将在这篇文章里分析事务的生命周期和组件之间的相互作用，但是在开始之前，我们需要先理解什么是 Group .</p>
+
+<p>组通讯工具包
+多主插件由组通讯工具包支撑，它决定了哪些 MySQL 属于组成员，执行故障检测和提供服务消息。有序消息队列不可思议的是，允许数据在所有成员之间是一致的。你可以在<a href="http://mysqlhighavailability.com/group-communication-behind-the-scenes/">Group communication</a> 这篇文章中详细了解。</p>
+
+<p>这些强大的属性，加上每个服务器的初始化状态相同，我们就能实现数据库状态机复制。</p>
+
+<p>除了组通讯系统的内容，剩下的基本概念是视图。当一个MySQL服务器加入到组，就会创建一个新的视图，这是一个逻辑标识，决定了哪些服务属于组成员。当服务器离开组成员（资源或非自愿），也会创建视图。这由一个内置的动态组成员资格服务提供。</p>
+
+<p>在开始应用事务之前，加入者将请求组当前状态，为了获取未同步的事务，因此会与最新的副本同步。这称为分布式恢复。你可以在<a href="http://mysqlhighavailability.com/distributed-recovery-behind-the-scenes/"> Distributed Recovery behind the scenes </a> 了解详情。</p>
+
+<p>事务生命周期</p>
+
+<p>假设现在组成员都已经建立相同的初始状态，现在我们需要在所有组成员就交易事务达成一致，那就是，如果任何事务在任何成员之间提交，必须保证在其他非故障组成员也提交该事务。
+对于写操作是一个非常高的要求，只读事务在本地执行查询。</p>
+
+<p>组通讯工具包给我们提供了一个顺序广播原语，也就是说，在顺序单相同的情况下所有的消息发送到所有成员，即便是故障的成员。也就意味着我们需要一个全局的消息序号在组内通讯，再结合事务交易的最终结果（提交或回滚）来决定保证所有成员最终达到一致状态。</p>
+
+<p>所以不管客户端什么时候执行写事务，它只是先在本地执行，直到真正提交才在其他成员间执行。</p>
+
+<p>现在我们需要决定本地指定的事务是应该提交还是回滚呢。每个成员都持有每行更新的相关联版本。这样我们就可以知道该行的版本信息在其他成员服务上是老的版本，因此并行在其他成员执行该操作。版本信息包含在执行的写事务里面。</p>
+
+<p>认证</p>
+
+<p>该决定由认证模块来执行，让我们看一个例子。</p>
+
+<p>在上图中，我们有一个3成员的组，一个客户端在S1上执行写事务，事务执行，直到提交阶段前，然后广播写操作和数据到组。</p>
+
+<p>事务写操作集由每个更新表的主键和事务执行时数据库版本组成。数据库版本由GTID_EXECUTED 提供，更准确的说，是没有间隙的连续的最后一个数。比如：GTID_EXECUTED: UUID:1-10, UUID:12, db版本是 10. 当事务提交，db version 会隐含增加。</p>
+
+<p>事务认证完成，也就是，每个成员都比较自身的版本信息，如果写事务的 db version 小于任意一个认证的数据库上的版本，则回滚。在 特定行的认证模块上没有版本信息，意味着还没有更新，不会引起任何事务回滚。</p>
+
+<p>db version 在执行时是 1（dbv:1），当前的认证模块版本也是 1 （cv:1），意味着该事务不会与任何其他进行着的事务冲突。所以事务允许被提交，认证模块行版本信息被更新为 2（cv:2）.这意味着本地的 s1 可以继续提交并返回成功给客户端。其他 s2,s3 的事务将放在队列由应用模块去应用。</p>
+
+<p>应用模块主要负责响应积极认证后到达的组事务，像s2,s3 。</p>
+
+<p>GTID 由认证模块管控，目的是为了给组所有成员相同的identifier。组成员共享相同的UUID，使得组跟single master （所有事务具有相同的UUID）一样，这里是组名称。更多的细节可以看 <a href="http://mysqlhighavailability.com/getting-started-with-mysql-group-replication/">Getting started with MySQL Group Replication post</a>.</p>
+
+<p>为了达到这样的效果，在分布式恢复时（一个新成员加入）认证模块状态也会被传输到新节点，再次满足DBSM要求，组的所有成员服务器必须具有相同的初始状态。</p>
+
+<p>让我们看一个例子，我们在事务间有冲突的事务。</p>
+
+<p>上图中我们依然是包含3个成员的组，s1 和 s2 分别执行事务 T1，T2（并发更新同一行），两个事务先本地执行在提交阶段之前，db version 1（dbv:1）,然后写事务和数据广播到组。</p>
+
+<p>组通讯工具，在这里例子里，将T1 排在 T2 前面，所以当认证模块更新行的版本 version 1（cv:1），事务将被积极认证通过，认证模块行版本 version 2（cv:2）然后所有成员的认证模块版本是 2 ，从而继续进入提交阶段。</p>
+
+<p>然后认证转向 T2，db version 还是 1（dbv:1）,但是认证模块的行版本信息是 2. 这也就说明该事务修改的行已经被前面通过认证的事务执行过了，所以 T2 必须消极认证，S2 将回滚事务，然后返回错误给客户端，其他成员将会忽略该事务。</p>
+
+<p>你可能会考虑一件事，认证模块数据会永无止境的增长，没有更多的细节？ 是的，但是我们有覆盖到，所有组成员定期交换他们的 GTID_EXECUTED 来计算他们已经提交的事务的交集 —— 稳定集合。任何组成员不能更新行版本小于已经执行的操作集合，然后执行垃圾回收器来移除所有已经属于稳定集合的行版本信息。</p>
+
+<p>认证模块状态可以在 performance_schema/replication_group_member_stats 表查询。</p>
+
+<p>server&gt; select * from performance_schema.replication_group_member_stats\G
+*************************** 1. row *****************************
+CHANNEL_NAME: group_replication_applier
+VIEW_ID: 1428497631:1
+MEMBER_ID: 855060ee-3fe5-11e4-a8d9-6067203feba0
+COUNT_TRANSACTIONS_IN_QUEUE: 0
+COUNT_TRANSACTIONS_CHECKED: 6
+COUNT_CONFLICTS_DETECTED: 1
+COUNT_TRANSACTIONS_VALIDATING: 3
+TRANSACTIONS_COMMITTED_ALL_MEMBERS: 8a94f357-aab4-11df-86ab-c80aa9429562:1-5
+LAST_CONFLICT_FREE_TRANSACTION: 8a94f357-aab4-11df-86ab-c80aa9429562:5</p>
+
+<p>结论：
+这只是第一步，MGR 仍然还在继续完善当中，在这片博文中我们阐述这项新复制技术的事务的生命周期，赶紧免费体验吧，然后回到社区，让我们使它变得更好。</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://wwcreator.github.io/2017/03/14/how_google_works/" title="How_Google_Works">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//http-wwcreator-github-io.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+<a href="https://wwcreator.github.io/license">license</a>
+
+
+  
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<script>
+        $(window).on("scroll",function(e){
+        if($('body').scrollTop() >= 400  ){
+                $('#gotop').show();
+
+
+        }else{
+                $('#gotop').hide();
+        }
+});
+</script>
+<div class="ctrolPanel" id="gotop" style="display:none;width:50px;height:50px;position:fixed;right:25px;top:85%;overflow:hidden;z-index:10000;">
+  <a href="#"><img title="返回顶部" src="/top21.png" /></a>
+</div>
+
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2017 wwcreator.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//http-wwcreator-github-io.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="https://wwcreator.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

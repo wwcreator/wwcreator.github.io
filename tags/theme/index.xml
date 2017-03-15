@@ -306,7 +306,7 @@
 &lt;strong&gt;修改后:&lt;/strong&gt;
 &lt;img src=&#34;https://wwcreator.github.io/media/hyde-y-2.png&#34; alt=&#34;hyde-y-after&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;更改背景色为黑色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改背景色为黑色：&lt;/h3&gt;
+&lt;h3 id=&#34;更改背景色为黑色&#34;&gt;更改背景色为黑色：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;.main_wrapper&amp;gt;.main_header {
     background-color: #2053AB;
@@ -326,7 +326,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;更改字体为-御納户-色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改字体为「御納户」色&lt;/h3&gt;
+&lt;h3 id=&#34;更改字体为-御納户-色&#34;&gt;更改字体为「御納户」色&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://nipponcolors.com/#onando&#34;&gt;Nippon Color&lt;/a&gt;&lt;/p&gt;
 
@@ -344,7 +344,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;更改hover为黑色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改hover为黑色&lt;/h3&gt;
+&lt;h3 id=&#34;更改hover为黑色&#34;&gt;更改hover为黑色&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;.main_wrapper&amp;gt;.main_content .label:hover,.main_wrapper&amp;gt;.main_content .navigation a:hover,.main_wrapper&amp;gt;.main_content .pagination a:hover,.main_wrapper&amp;gt;.main_content .readlink a:hover,.main_wrapper&amp;gt;.main_content h2 a:hover,.main_wrapper&amp;gt;.main_header a:hover {
     background-color: #2053AB;

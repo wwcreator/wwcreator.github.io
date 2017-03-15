@@ -9,8 +9,156 @@
     <managingEditor>yuwen_qing@126.com (wwcreator)</managingEditor>
     <webMaster>yuwen_qing@126.com (wwcreator)</webMaster>
     <copyright>(c) 2017 wwcreator.</copyright>
-    <lastBuildDate>Mon, 13 Mar 2017 18:09:55 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 14 Mar 2017 18:22:41 -0700</lastBuildDate>
     <atom:link href="https://wwcreator.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MySQL Group Replication – Transaction life cycle explained</title>
+      <link>https://wwcreator.github.io/2017/03/14/mysql-group-replication--transaction-life-cycle-explained/</link>
+      <pubDate>Tue, 14 Mar 2017 18:22:41 -0700</pubDate>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/03/14/mysql-group-replication--transaction-life-cycle-explained/</guid>
+      <description>&lt;p&gt;MySQL Group Replication – Transaction life cycle explained&lt;/p&gt;
+
+&lt;p&gt;MySQL Group Replication - 事务生命周期分析&lt;/p&gt;
+
+&lt;p&gt;MySQL multi master 插件来了，MGR 可以实现在任何 MySQL 成员进行同步更新，冲突处理，成员自动管理和成员故障检测。&lt;/p&gt;
+
+&lt;p&gt;为了更好的理解 MGR 的工作原理，我们将在这篇文章里分析事务的生命周期和组件之间的相互作用，但是在开始之前，我们需要先理解什么是 Group .&lt;/p&gt;
+
+&lt;p&gt;组通讯工具包
+多主插件由组通讯工具包支撑，它决定了哪些 MySQL 属于组成员，执行故障检测和提供服务消息。有序消息队列不可思议的是，允许数据在所有成员之间是一致的。你可以在&lt;a href=&#34;http://mysqlhighavailability.com/group-communication-behind-the-scenes/&#34;&gt;Group communication&lt;/a&gt; 这篇文章中详细了解。&lt;/p&gt;
+
+&lt;p&gt;这些强大的属性，加上每个服务器的初始化状态相同，我们就能实现数据库状态机复制。&lt;/p&gt;
+
+&lt;p&gt;除了组通讯系统的内容，剩下的基本概念是视图。当一个MySQL服务器加入到组，就会创建一个新的视图，这是一个逻辑标识，决定了哪些服务属于组成员。当服务器离开组成员（资源或非自愿），也会创建视图。这由一个内置的动态组成员资格服务提供。&lt;/p&gt;
+
+&lt;p&gt;在开始应用事务之前，加入者将请求组当前状态，为了获取未同步的事务，因此会与最新的副本同步。这称为分布式恢复。你可以在&lt;a href=&#34;http://mysqlhighavailability.com/distributed-recovery-behind-the-scenes/&#34;&gt; Distributed Recovery behind the scenes &lt;/a&gt; 了解详情。&lt;/p&gt;
+
+&lt;p&gt;事务生命周期&lt;/p&gt;
+
+&lt;p&gt;假设现在组成员都已经建立相同的初始状态，现在我们需要在所有组成员就交易事务达成一致，那就是，如果任何事务在任何成员之间提交，必须保证在其他非故障组成员也提交该事务。
+对于写操作是一个非常高的要求，只读事务在本地执行查询。&lt;/p&gt;
+
+&lt;p&gt;组通讯工具包给我们提供了一个顺序广播原语，也就是说，在顺序单相同的情况下所有的消息发送到所有成员，即便是故障的成员。也就意味着我们需要一个全局的消息序号在组内通讯，再结合事务交易的最终结果（提交或回滚）来决定保证所有成员最终达到一致状态。&lt;/p&gt;
+
+&lt;p&gt;所以不管客户端什么时候执行写事务，它只是先在本地执行，直到真正提交才在其他成员间执行。&lt;/p&gt;
+
+&lt;p&gt;现在我们需要决定本地指定的事务是应该提交还是回滚呢。每个成员都持有每行更新的相关联版本。这样我们就可以知道该行的版本信息在其他成员服务上是老的版本，因此并行在其他成员执行该操作。版本信息包含在执行的写事务里面。&lt;/p&gt;
+
+&lt;p&gt;认证&lt;/p&gt;
+
+&lt;p&gt;该决定由认证模块来执行，让我们看一个例子。&lt;/p&gt;
+
+&lt;p&gt;在上图中，我们有一个3成员的组，一个客户端在S1上执行写事务，事务执行，直到提交阶段前，然后广播写操作和数据到组。&lt;/p&gt;
+
+&lt;p&gt;事务写操作集由每个更新表的主键和事务执行时数据库版本组成。数据库版本由GTID_EXECUTED 提供，更准确的说，是没有间隙的连续的最后一个数。比如：GTID_EXECUTED: UUID:1-10, UUID:12, db版本是 10. 当事务提交，db version 会隐含增加。&lt;/p&gt;
+
+&lt;p&gt;事务认证完成，也就是，每个成员都比较自身的版本信息，如果写事务的 db version 小于任意一个认证的数据库上的版本，则回滚。在 特定行的认证模块上没有版本信息，意味着还没有更新，不会引起任何事务回滚。&lt;/p&gt;
+
+&lt;p&gt;db version 在执行时是 1（dbv:1），当前的认证模块版本也是 1 （cv:1），意味着该事务不会与任何其他进行着的事务冲突。所以事务允许被提交，认证模块行版本信息被更新为 2（cv:2）.这意味着本地的 s1 可以继续提交并返回成功给客户端。其他 s2,s3 的事务将放在队列由应用模块去应用。&lt;/p&gt;
+
+&lt;p&gt;应用模块主要负责响应积极认证后到达的组事务，像s2,s3 。&lt;/p&gt;
+
+&lt;p&gt;GTID 由认证模块管控，目的是为了给组所有成员相同的identifier。组成员共享相同的UUID，使得组跟single master （所有事务具有相同的UUID）一样，这里是组名称。更多的细节可以看 &lt;a href=&#34;http://mysqlhighavailability.com/getting-started-with-mysql-group-replication/&#34;&gt;Getting started with MySQL Group Replication post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;为了达到这样的效果，在分布式恢复时（一个新成员加入）认证模块状态也会被传输到新节点，再次满足DBSM要求，组的所有成员服务器必须具有相同的初始状态。&lt;/p&gt;
+
+&lt;p&gt;让我们看一个例子，我们在事务间有冲突的事务。&lt;/p&gt;
+
+&lt;p&gt;上图中我们依然是包含3个成员的组，s1 和 s2 分别执行事务 T1，T2（并发更新同一行），两个事务先本地执行在提交阶段之前，db version 1（dbv:1）,然后写事务和数据广播到组。&lt;/p&gt;
+
+&lt;p&gt;组通讯工具，在这里例子里，将T1 排在 T2 前面，所以当认证模块更新行的版本 version 1（cv:1），事务将被积极认证通过，认证模块行版本 version 2（cv:2）然后所有成员的认证模块版本是 2 ，从而继续进入提交阶段。&lt;/p&gt;
+
+&lt;p&gt;然后认证转向 T2，db version 还是 1（dbv:1）,但是认证模块的行版本信息是 2. 这也就说明该事务修改的行已经被前面通过认证的事务执行过了，所以 T2 必须消极认证，S2 将回滚事务，然后返回错误给客户端，其他成员将会忽略该事务。&lt;/p&gt;
+
+&lt;p&gt;你可能会考虑一件事，认证模块数据会永无止境的增长，没有更多的细节？ 是的，但是我们有覆盖到，所有组成员定期交换他们的 GTID_EXECUTED 来计算他们已经提交的事务的交集 —— 稳定集合。任何组成员不能更新行版本小于已经执行的操作集合，然后执行垃圾回收器来移除所有已经属于稳定集合的行版本信息。&lt;/p&gt;
+
+&lt;p&gt;认证模块状态可以在 performance_schema/replication_group_member_stats 表查询。&lt;/p&gt;
+
+&lt;p&gt;server&amp;gt; select * from performance_schema.replication_group_member_stats\G
+*************************** 1. row *****************************
+CHANNEL_NAME: group_replication_applier
+VIEW_ID: 1428497631:1
+MEMBER_ID: 855060ee-3fe5-11e4-a8d9-6067203feba0
+COUNT_TRANSACTIONS_IN_QUEUE: 0
+COUNT_TRANSACTIONS_CHECKED: 6
+COUNT_CONFLICTS_DETECTED: 1
+COUNT_TRANSACTIONS_VALIDATING: 3
+TRANSACTIONS_COMMITTED_ALL_MEMBERS: 8a94f357-aab4-11df-86ab-c80aa9429562:1-5
+LAST_CONFLICT_FREE_TRANSACTION: 8a94f357-aab4-11df-86ab-c80aa9429562:5&lt;/p&gt;
+
+&lt;p&gt;结论：
+这只是第一步，MGR 仍然还在继续完善当中，在这片博文中我们阐述这项新复制技术的事务的生命周期，赶紧免费体验吧，然后回到社区，让我们使它变得更好。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How_Google_Works</title>
+      <link>https://wwcreator.github.io/2017/03/14/how_google_works/</link>
+      <pubDate>Tue, 14 Mar 2017 00:04:06 -0700</pubDate>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/03/14/how_google_works/</guid>
+      <description>&lt;p&gt;维格曼斯（wegmans）:“用心才能成就成功的企业。我们的员工都心怀这种愿景，尽心竭力，不让顾客离开时不开心。我们也依此做决定，善待员工，不计成本。”&lt;/p&gt;
+
+&lt;p&gt;如果不负责软硬兼施执行这些大棒加胡萝卜的手段，一名管理者到底该做些什么呢？只有一件事情可以做，按照执行总裁 埃里克.施密特的话就是“管理者服务于团队”。&lt;/p&gt;
+
+&lt;p&gt;人的一生大部分时间都在工作，但是对多数人而言，工作是一件痛苦的事情，只是一种谋生的手段，可以不必如此的。&lt;/p&gt;
+
+&lt;p&gt;我们无法给出所有问题的答案，但是却有一些值得深入体味的发现，如何更好地探寻和发展自由、富有创造力和宽松的环境，使员工在这种环境下工作。&lt;/p&gt;
+
+&lt;p&gt;传奇故事有千万种，但却如此相似。神话学者约瑟夫.坎贝尔认为，全世界绝大多数神话故事都可以归结到很少的几个原型故事上。我们受到召唤去冒险，经历了各种试炼，变得更明智，最后云淡风轻，心平气和。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Growth_Hacker</title>
+      <link>https://wwcreator.github.io/2017/03/14/growth_hacker/</link>
+      <pubDate>Tue, 14 Mar 2017 00:02:45 -0700</pubDate>
+      <author>yuwen_qing@126.com (wwcreator)</author>
+      <guid>https://wwcreator.github.io/2017/03/14/growth_hacker/</guid>
+      <description>
+
+&lt;p&gt;增长黑客手册&lt;/p&gt;
+
+&lt;h2 id=&#34;什么是增长黑客:4ade180de9b1a3277afb3c1de5badef0&#34;&gt;什么是增长黑客？&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;增长黑客是在2010年被 Sean Ellis 提出，是将增长作为唯一目标的人，他做的事情都是围绕如何扩大增长而开展。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;虽然传统的市场销售人员也关注增长，但是与增长黑客的绝对关注相比较，两者还是有本质的区别。增长黑客必须将增长目标和解决方案紧密结合，除了采用已经被证明的方案，还要有创造力去探寻促进增长的新思路。&lt;/p&gt;
+
+&lt;p&gt;他认为增长黑客工作的核心就是测试！需要分析现状提出自己的想法，然后给这些想法排优先级，通过快速测试和分析找到驱动增长的因素。这个过程是可以不断重复的，重复的速度越快，我们就能找到更多的增长方案，增长速度也就越快。&lt;/p&gt;
+
+&lt;p&gt;Andrew Chen 的一篇博文 《Growth Hacker is the new VP Marketing》说道：
+    增长黑客是市场营销人员和工程技术人员的混血儿，他们着眼于「产品该如何获取用户」等传统问题，并通过A/B测试、落地页、病毒营销、邮件营销等方式来解决。&lt;/p&gt;
+
+&lt;p&gt;2015年，范冰出版的《增长黑客》迅速在国内推广，从海盗指标AARRR五个方面详细介绍国内外的增长黑客的实践案例。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;增长黑客, 是一群以数据驱动营销，以市场指导产品，通过技术化手段贯彻增长目标的人。他们通常既了解技术，又深谙用户心理，擅长发挥创意，绕过限制，通过低成本的手段解决初创公司产品早期的增长问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;张溪梦认为：增长黑客是集市场营销、产品营销、数据分析三个角色的聚合。核心是以最快的方法、最低的成本、最高效的手段获取大量的增长。&lt;/p&gt;
+
+&lt;p&gt;案例分析：如何提高用户留存&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第一步：设定增长目标&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第二步：确定聚焦领域&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第三步：排序各种各样的试验想法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第四步：设计上线试验和A/B测试&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第五步：分析应用结果&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;增长黑客的「海盗法则」 AARRR 模型。获取，激活，留存，盈利，推荐&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>delete_duplicate_row</title>
@@ -158,13 +306,13 @@ Query OK, 17 rows affected (0.02 sec)
 
 &lt;p&gt;来，我教你。&lt;/p&gt;
 
-&lt;h2 id=&#34;备份博客园数据:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;备份博客园数据&lt;/h2&gt;
+&lt;h2 id=&#34;备份博客园数据&#34;&gt;备份博客园数据&lt;/h2&gt;
 
 &lt;p&gt;备份这件小事，应该难不倒你，但是博客园有限制，工作日在「08:00-18:00」,不能备份，所以备份需要挑时间的喔。备份生成的是一份 XML 格式的文件，下一步，continue 。&lt;/p&gt;
 
-&lt;h3 id=&#34;解析-xml-文件的内容:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
+&lt;h3 id=&#34;解析-xml-文件的内容&#34;&gt;解析 XML 文件的内容&lt;/h3&gt;
 
-&lt;h4 id=&#34;注意:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;注意：&lt;/h4&gt;
+&lt;h4 id=&#34;注意&#34;&gt;注意：&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;备份的 XML 没有美化成标准的 XML 格式，所以需要去网站上搜索进行 XML 格式美化再保存替换。&lt;/li&gt;
@@ -223,7 +371,7 @@ for blog in blogs:
 
 &lt;p&gt;执行该脚本，会生成所有的博文。拷贝到 Hugo 的content/post/ 目录，在本地预览效果吧，如果没有问题就 &lt;code&gt;Push&lt;/code&gt; 到 &lt;code&gt;Github&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h3 id=&#34;结束语:8480fb8dece3f835b0e0e52af9ea4e0a&#34;&gt;结束语&lt;/h3&gt;
+&lt;h3 id=&#34;结束语&#34;&gt;结束语&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;使用这样是获取不到数据：&lt;code&gt;content = blog.getElementsByTagName(&#39;description&#39;)[0].childNodes[0].data&lt;/code&gt;&lt;/li&gt;
@@ -519,7 +667,7 @@ for blog in blogs:
 &lt;strong&gt;修改后:&lt;/strong&gt;
 &lt;img src=&#34;https://wwcreator.github.io/media/hyde-y-2.png&#34; alt=&#34;hyde-y-after&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;更改背景色为黑色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改背景色为黑色：&lt;/h3&gt;
+&lt;h3 id=&#34;更改背景色为黑色&#34;&gt;更改背景色为黑色：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;.main_wrapper&amp;gt;.main_header {
     background-color: #2053AB;
@@ -539,7 +687,7 @@ for blog in blogs:
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;更改字体为-御納户-色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改字体为「御納户」色&lt;/h3&gt;
+&lt;h3 id=&#34;更改字体为-御納户-色&#34;&gt;更改字体为「御納户」色&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://nipponcolors.com/#onando&#34;&gt;Nippon Color&lt;/a&gt;&lt;/p&gt;
 
@@ -557,7 +705,7 @@ for blog in blogs:
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;更改hover为黑色:4842e6ac433cf262b3cd97278863004f&#34;&gt;更改hover为黑色&lt;/h3&gt;
+&lt;h3 id=&#34;更改hover为黑色&#34;&gt;更改hover为黑色&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;.main_wrapper&amp;gt;.main_content .label:hover,.main_wrapper&amp;gt;.main_content .navigation a:hover,.main_wrapper&amp;gt;.main_content .pagination a:hover,.main_wrapper&amp;gt;.main_content .readlink a:hover,.main_wrapper&amp;gt;.main_content h2 a:hover,.main_wrapper&amp;gt;.main_header a:hover {
     background-color: #2053AB;
@@ -656,7 +804,7 @@ for blog in blogs:
       <guid>https://wwcreator.github.io/2017/02/20/hugo_goal/</guid>
       <description>
 
-&lt;h2 id=&#34;to-do&#34;&gt;TO DO.&lt;/h2&gt;
+&lt;h2 id=&#34;to-do:1cc7014b1e3901d48c7faf1196e12413&#34;&gt;TO DO.&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;[ ] hugo 是否支持站内搜索？&lt;/li&gt;
@@ -665,7 +813,7 @@ for blog in blogs:
 &lt;li&gt;[ ] hugo webhook 怎么实现 ？&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;done&#34;&gt;DONE .&lt;/h2&gt;
+&lt;h2 id=&#34;done:1cc7014b1e3901d48c7faf1196e12413&#34;&gt;DONE .&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;[x] hugo更改 post 展示字体大小，从 h2 改为 h3&lt;/li&gt;
@@ -686,9 +834,9 @@ for blog in blogs:
       <guid>https://wwcreator.github.io/license/</guid>
       <description>
 
-&lt;h1 id=&#34;simple-public-license-simpl-2-0:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;Simple Public License (SimPL-2.0)&lt;/h1&gt;
+&lt;h1 id=&#34;simple-public-license-simpl-2-0&#34;&gt;Simple Public License (SimPL-2.0)&lt;/h1&gt;
 
-&lt;h2 id=&#34;preamble:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;Preamble&lt;/h2&gt;
+&lt;h2 id=&#34;preamble&#34;&gt;Preamble&lt;/h2&gt;
 
 &lt;p&gt;This Simple Public License 2.0 (SimPL-2.0 for short) is a plain language
 implementation of GPL 2.0.  The words are different, but the goal is the
@@ -696,7 +844,7 @@ same - to guarantee for all users the freedom to share and change
 software.  If anyone wonders about the meaning of the SimPL, they should
 interpret it as consistent with GPL 2.0.&lt;/p&gt;
 
-&lt;h1 id=&#34;simple-public-license-simpl-2-0-1:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;Simple Public License (SimPL) 2.0&lt;/h1&gt;
+&lt;h1 id=&#34;simple-public-license-simpl-2-0-1&#34;&gt;Simple Public License (SimPL) 2.0&lt;/h1&gt;
 
 &lt;p&gt;The SimPL applies to the software&amp;rsquo;s source and object code and comes
 with any rights that I have in it (other than trademarks). You agree to
@@ -749,7 +897,7 @@ licensees get to keep their rights if they abide);&lt;/li&gt;
 of the SimPL.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;license-for-the-license:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;License for the License&lt;/h2&gt;
+&lt;h2 id=&#34;license-for-the-license&#34;&gt;License for the License&lt;/h2&gt;
 
 &lt;p&gt;You may do anything that you want with the SimPL text; it&amp;rsquo;s a license
 form to use in any way that you find helpful.  To avoid confusion,
@@ -961,15 +1109,15 @@ To git@GitHub.com:wwcreator/wwcreator.github.io.git
       <guid>https://wwcreator.github.io/2017/02/14/mysql-%E5%B8%B8%E7%94%A8%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B/</guid>
       <description>
 
-&lt;h1 id=&#34;mysql-常用的备份方式有哪些:594245a56ae1434f284c298be360de6a&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
+&lt;h1 id=&#34;mysql-常用的备份方式有哪些&#34;&gt;MySQL 常用的备份方式有哪些 ?&lt;/h1&gt;
 
 &lt;p&gt;不管是MySQL, Oracle，MariaDB 等关系型数据库，还是 MongoDB，Redis 等 NoSQL 数据库，都有众所周知的&lt;code&gt;Logical Backup&lt;/code&gt; &amp;amp;  &lt;code&gt;Physical Backup&lt;/code&gt; 。&lt;/p&gt;
 
-&lt;h2 id=&#34;mysql-logical-backups:594245a56ae1434f284c298be360de6a&#34;&gt;MySQL Logical Backups&lt;/h2&gt;
+&lt;h2 id=&#34;mysql-logical-backups&#34;&gt;MySQL Logical Backups&lt;/h2&gt;
 
 &lt;p&gt;逻辑备份是按照数据库的逻辑结构（CREATE DATABASE, CREATE TABLE 语句）和内容（INSERT,分隔文本）的方式来存储。非常常用的是当属 MySQL 自带的 &lt;code&gt;mysqldump&lt;/code&gt;和 &lt;code&gt;mydumper&lt;/code&gt; 工具。&lt;/p&gt;
 
-&lt;h3 id=&#34;mysqldump:594245a56ae1434f284c298be360de6a&#34;&gt;mysqldump&lt;/h3&gt;
+&lt;h3 id=&#34;mysqldump&#34;&gt;mysqldump&lt;/h3&gt;
 
 &lt;p&gt;mysqldump 支持导出部分DB，部分Table， 而且还支持 &amp;ndash;where 行条件过滤（不支持列过滤），InnoDB引擎不锁表导出等。还支持获取导出的 Binlog position，很方便的进行PIT（point in time）recover。&lt;/p&gt;
 
@@ -983,7 +1131,7 @@ recover：
 &lt;p&gt;PS: MySQL 5.7.11 版本引入 mysqlpump 工具，支持多线程（粒度到表级别），压缩导入导出。
 mysqlpump的并行导出功能的架构为：队列+线程，允许有多个队列，每个队列下有多个线程，而一个队列可以绑定1个或者多个数据库。但是，对于每张表的导出只能是单个线程的。&lt;/p&gt;
 
-&lt;h3 id=&#34;mydumper:594245a56ae1434f284c298be360de6a&#34;&gt;mydumper&lt;/h3&gt;
+&lt;h3 id=&#34;mydumper&#34;&gt;mydumper&lt;/h3&gt;
 
 &lt;p&gt;mydumper（&amp;amp;myloader）是用于对MySQL数据库进行多线程备份和恢复的开源 (GNU GPLv3)工具。开发人员主要来自MySQL、Facebook和SkySQL公司，目前由Percona公司开发和维护。
 mydumper 支持多线程备份恢复，粒度到记录级别，对于导出大容量的数据，效率非常高。&lt;/p&gt;
@@ -998,11 +1146,11 @@ recover:
   - 主线程将各个库表，分成若干个任务，放入任务队列
   - 执行线程从任务队列读取任务，并执行。&lt;/p&gt;
 
-&lt;h2 id=&#34;mysql-physical-backups:594245a56ae1434f284c298be360de6a&#34;&gt;MySQL Physical Backups&lt;/h2&gt;
+&lt;h2 id=&#34;mysql-physical-backups&#34;&gt;MySQL Physical Backups&lt;/h2&gt;
 
 &lt;p&gt;物理备份由一系列的存储数据库内容的 raw 格式的文件组成，为了保证一致性，必须关机来拷贝物理文件，但是 Percona 公司的 Xtrabackup 工具完美的解决了关机备份的不可行方案，从而实现热备。&lt;/p&gt;
 
-&lt;h3 id=&#34;xtrabackup:594245a56ae1434f284c298be360de6a&#34;&gt;Xtrabackup&lt;/h3&gt;
+&lt;h3 id=&#34;xtrabackup&#34;&gt;Xtrabackup&lt;/h3&gt;
 
 &lt;p&gt;Xtrabackup 有两个主要的工具，xtrabackup，innobackup：
 - xtrabackup 只能备份 InnoDB 和 XtraDB 两种数据表
@@ -1027,14 +1175,14 @@ recover:
 4. 停止拷贝 REDO ,UNLOCK tables
 5. 等待 xtrabackup 结束，备份结束&lt;/p&gt;
 
-&lt;h2 id=&#34;mysqldump-pk-mydumper:594245a56ae1434f284c298be360de6a&#34;&gt;mysqldump PK mydumper&lt;/h2&gt;
+&lt;h2 id=&#34;mysqldump-pk-mydumper&#34;&gt;mysqldump PK mydumper&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;mysqldump 为 MySQL 原生工具，不需要额外安装，对于导出不是特别大的DB，仍然是非常棒的工具，但对于容量大，但又必须逻辑导出的场景就不是特别合适，需要的时间特别长，不支持多线程导入导出。&lt;/li&gt;
 &lt;li&gt;mydumper 需要额外安装才能使用，支持多线程备份导入，速度快，支持后台模式导出&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;logical-pk-physical-backup:594245a56ae1434f284c298be360de6a&#34;&gt;Logical PK Physical Backup&lt;/h2&gt;
+&lt;h2 id=&#34;logical-pk-physical-backup&#34;&gt;Logical PK Physical Backup&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;逻辑备份可以灵活的导出数据（表结构，数据，过滤等）&lt;/li&gt;
@@ -1042,38 +1190,6 @@ recover:
 &lt;li&gt;逻辑备份的恢复时间长&lt;/li&gt;
 &lt;li&gt;物理备份的文件与线上 MySQL 完全一致，包含所有的日志等信息&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello World</title>
-      <link>https://wwcreator.github.io/2017/02/14/hello-world/</link>
-      <pubDate>Tue, 14 Feb 2017 19:50:52 -0800</pubDate>
-      <author>yuwen_qing@126.com (wwcreator)</author>
-      <guid>https://wwcreator.github.io/2017/02/14/hello-world/</guid>
-      <description>
-
-&lt;h3 id=&#34;hello-world:bef80f8e73e4e4bfdcc92e5136092d00&#34;&gt;Hello World&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;Hello World
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>about</title>
-      <link>https://wwcreator.github.io/about/</link>
-      <pubDate>Tue, 14 Feb 2017 19:49:54 -0800</pubDate>
-      <author>yuwen_qing@126.com (wwcreator)</author>
-      <guid>https://wwcreator.github.io/about/</guid>
-      <description>
-
-&lt;h3 id=&#34;this-is-a-wwcreator-blog:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;this is a wwcreator blog .&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;En-Name: Kelly
-E-mail: yuwen_qing@126.com
-Jobs: MySQL DBA
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
